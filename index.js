@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById("index")
-);
+import Replay from "./components/replay";
+
+ReactDOM.render(<Replay />, document.getElementById("index"));
