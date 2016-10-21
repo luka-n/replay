@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Progress } from "reactstrap";
+
 import Controls from "./controls";
 
 const propTypes = {
@@ -7,6 +9,12 @@ const propTypes = {
 };
 
 class Audio extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      progress: 0
+    }
+  }
   audioSrc() {
     return this.props.track ? `/tracks/${this.props.track._id}` : null;
   }
@@ -23,12 +31,24 @@ class Audio extends React.Component {
     this._audioTag.pause();
   }
 
+  componentDidMount() {
+    this._audioTag
+        .addEventListener("timeupdate", this.handleProgress.bind(this));
+  }
+
+  handleProgress() {
+    this.setState({
+      progress: (this._audioTag.played.end(0) / this._audioTag.duration) * 100
+    });
+  }
+
   render() {
     return (
       <div>
         <audio src={this.audioSrc()}
                ref={this.setAudioTag.bind(this)}>
         </audio>
+        <Progress value={this.state.progress} />
         <Controls onPlay={this.handlePlay.bind(this)}
                   onPause={this.handlePause.bind(this)} />
       </div>
