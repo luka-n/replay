@@ -3,16 +3,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 
+import { Table } from "reactstrap";
+
 import Track from "./track";
 
 const propTypes = {
   onSelect: React.PropTypes.func.isRequired
-};
-
-const styles = {
-  column: {
-    padding: "0.5em 1em"
-  }
 };
 
 class TrackList extends React.Component {
@@ -50,26 +46,19 @@ class TrackList extends React.Component {
       );
     });
     return (
-      <table style={{
-               width: "100%",
-               borderCollapse: "collapse"
-             }}>
-        <thead style={{
-                 backgroundColor: "#111",
-                 color: "#ccc",
-                 textAlign: "left"
-               }}>
+      <Table hover={true} striped={true}>
+        <thead>
           <tr>
-            <th style={styles.column}>#</th>
-            <th style={styles.column}>Artist</th>
-            <th style={styles.column}>Title</th>
-            <th style={styles.column}>Album</th>
+            <th>#</th>
+            <th>Artist</th>
+            <th>Title</th>
+            <th>Album</th>
           </tr>
         </thead>
         <tbody>
           {tracks}
         </tbody>
-      </table>
+      </Table>
     );
   }
 }
