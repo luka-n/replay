@@ -6,11 +6,10 @@ import Express from "express";
 const app = Express();
 const db = new Datastore({filename: "db/tracks.db", autoload: true});
 
-app.set("view engine", "ejs");
 app.use(Express.static("./"));
 
 app.get("/", (req, res) => {
-  return res.render("index");
+  return res.sendFile("index.html");
 });
 
 app.get("/tracks", async (req, res) => {
