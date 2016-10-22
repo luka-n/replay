@@ -3,3 +3,10 @@ $font-size-root: 14px !default;
 $border-radius: 0 !default;
 
 @import "~bootstrap/scss/bootstrap.scss";
+
+$navbar-height: 47px;           // Apparently ...
+
+body {
+  padding-top: $navbar-height;
+  padding-bottom: $navbar-height;
+}

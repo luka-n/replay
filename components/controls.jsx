@@ -9,6 +9,12 @@ const propTypes = {
   onPause: React.PropTypes.func.isRequired
 };
 
+const styles = {
+  progress: {
+    margin: "0"
+  }
+};
+
 class Controls extends React.Component {
   handlePlayClick() {
     this.props.onPlay();
@@ -21,7 +27,7 @@ class Controls extends React.Component {
   render() {
     return (
       <div className="text-xs-center">
-        <Progress value={this.props.progress} />
+        <Progress value={this.props.progress} style={styles.progress} />
         <Button color="danger"
                 onClick={this.handlePlayClick.bind(this)}>
           <Icon name="play" />
