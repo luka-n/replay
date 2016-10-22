@@ -1,5 +1,4 @@
 import React from "react";
-import Radium from "radium";
 
 const propTypes = {
   track: React.PropTypes.object.isRequired,
@@ -24,4 +23,4 @@ class Track extends React.Component {
 
 Track.propTypes = propTypes;
 
-export default Radium(Track);
+export default Track;

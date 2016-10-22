@@ -1,4 +1,3 @@
-import Radium from "radium";
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
@@ -63,4 +62,4 @@ class TrackList extends React.Component {
   }
 }
 
-export default Radium(TrackList);
+export default TrackList;
