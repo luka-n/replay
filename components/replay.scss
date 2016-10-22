@@ -1,4 +1,15 @@
+@import "../index.scss";
+
 .replay {
+  .sidebar {
+    background: #f7f7f9;
+    padding: 15px 0;
+    position: fixed;
+    top: $navbar-height;
+    bottom: $navbar-height;
+    left: 0;
+  }
+
   .bottom-navbar {
     padding: 0;
   }

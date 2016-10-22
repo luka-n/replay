@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Navbar, NavbarBrand } from "reactstrap";
+import { Nav, NavItem, NavLink } from "reactstrap";
 
 import Audio from "./audio";
 import TrackList from "./track-list";
@@ -27,7 +28,17 @@ export default class Replay extends React.Component {
         </Navbar>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-xs-12">
+            <div className="sidebar col-xs-2">
+              <Nav pills stacked>
+                <NavItem>
+                  <NavLink active href>Library</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href>Queue</NavLink>
+                </NavItem>
+              </Nav>
+            </div>
+            <div className="col-xs-10 offset-xs-2">
               <TrackList onSelect={this.handleTrackSelect.bind(this)} />
             </div>
           </div>
