@@ -4,10 +4,15 @@ module.exports = {
     path: __dirname + "/dist",
     filename: "bundle.js"
   },
+  resolve: {
+    // Setting this overrides the default, so ...
+    // Default is: ["", ".webpack.js", ".web.js", ".js"]
+    extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx"]
+  },
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: "babel-loader"
       },
