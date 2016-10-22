@@ -56,7 +56,6 @@ class Audio extends React.Component {
   }
 
   render() {
-    console.log(this.state.playing);
     return (
       <div>
         <audio src={this.audioSrc()}
