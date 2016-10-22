@@ -23,6 +23,6 @@ app.get("/tracks/:id", async (req, res) => {
   fs.createReadStream(track.path).pipe(res);
 });
 
-app.listen(9000, () => {
-  console.log("Listening on port 9000 ...");
+app.listen(9090, () => {
+  console.log("Listening on port 9090 ...");
 });
