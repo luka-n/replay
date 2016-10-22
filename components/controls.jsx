@@ -5,6 +5,7 @@ import { Icon } from "react-fa";
 
 const propTypes = {
   progress: React.PropTypes.number.isRequired,
+  playing: React.PropTypes.bool.isRequired,
   onPlay: React.PropTypes.func.isRequired,
   onPause: React.PropTypes.func.isRequired
 };
@@ -16,12 +17,12 @@ const styles = {
 };
 
 class Controls extends React.Component {
-  handlePlayClick() {
-    this.props.onPlay();
-  }
-
-  handlePauseClick() {
-    this.props.onPause();
+  handleToggleClick() {
+    if (this.props.playing) {
+      this.props.onPause();
+    } else {
+      this.props.onPlay();
+    }
   }
 
   render() {
@@ -29,12 +30,8 @@ class Controls extends React.Component {
       <div className="text-xs-center">
         <Progress value={this.props.progress} style={styles.progress} />
         <Button color="danger"
-                onClick={this.handlePlayClick.bind(this)}>
-          <Icon name="play" />
-        </Button>
-        <Button color="danger"
-                onClick={this.handlePauseClick.bind(this)}>
-          <Icon name="pause" />
+                onClick={this.handleToggleClick.bind(this)}>
+          <Icon name={this.props.playing ? "pause" : "play"} />
         </Button>
       </div>
     );

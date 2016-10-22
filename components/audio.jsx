@@ -10,7 +10,8 @@ class Audio extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      progress: 0
+      progress: 0,
+      playing: false
     }
   }
   audioSrc() {
@@ -21,34 +22,50 @@ class Audio extends React.Component {
     this._audioTag = audioTag;
   }
 
-  handlePlay() {
-    this._audioTag.play();
-  }
-
-  handlePause() {
-    this._audioTag.pause();
-  }
-
   componentDidMount() {
-    this._audioTag
-        .addEventListener("timeupdate", this.handleProgress.bind(this));
+    this._audioTag.addEventListener("playing", this.handlePlayingEvent.bind(this));
+    this._audioTag.addEventListener("pause", this.handlePauseEvent.bind(this));
+    this._audioTag.addEventListener("ended", this.handleEndedEvent.bind(this));
+    this._audioTag.addEventListener("timeupdate", this.handleTimeupdateEvent.bind(this));
   }
 
-  handleProgress() {
+  handlePlayingEvent() {
+    this.setState({playing: true});
+  }
+
+  handlePauseEvent() {
+    this.setState({playing: false});
+  }
+
+  handleEndedEvent() {
+    this.setState({playing: false, progress: 0});
+  }
+
+  handleTimeupdateEvent() {
     this.setState({
       progress: (this._audioTag.played.end(0) / this._audioTag.duration) * 100
     });
   }
 
+  handlePlayClick() {
+    this._audioTag.play();
+  }
+
+  handlePauseClick() {
+    this._audioTag.pause();
+  }
+
   render() {
+    console.log(this.state.playing);
     return (
       <div>
         <audio src={this.audioSrc()}
                ref={this.setAudioTag.bind(this)}>
         </audio>
         <Controls progress={this.state.progress}
-                  onPlay={this.handlePlay.bind(this)}
-                  onPause={this.handlePause.bind(this)} />
+                  playing={this.state.playing}
+                  onPlay={this.handlePlayClick.bind(this)}
+                  onPause={this.handlePauseClick.bind(this)} />
       </div>
     );
   }
