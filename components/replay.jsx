@@ -5,11 +5,7 @@ import { Navbar, NavbarBrand } from "reactstrap";
 import Audio from "./audio";
 import TrackList from "./track-list";
 
-const styles = {
-  bottomNavbar: {
-    padding: "0"
-  }
-};
+import "./replay.scss";
 
 export default class Replay extends React.Component {
   constructor(props) {
@@ -25,7 +21,7 @@ export default class Replay extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="replay">
         <Navbar dark color="inverse" fixed="top">
           <NavbarBrand href="/">replay</NavbarBrand>
         </Navbar>
@@ -36,7 +32,7 @@ export default class Replay extends React.Component {
             </div>
           </div>
         </div>
-        <Navbar light color="faded" fixed="bottom" style={styles.bottomNavbar}>
+        <Navbar light color="faded" fixed="bottom" className="bottom-navbar">
           <Audio track={this.state.track} />
         </Navbar>
       </div>

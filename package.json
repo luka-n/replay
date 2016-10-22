@@ -33,7 +33,6 @@
     "music-tag": "^0.0.9",
     "nedb-promise": "^2.0.0",
     "node-sass": "^3.10.1",
-    "radium": "^0.18.1",
     "react-addons-css-transition-group": "^15.3.2",
     "react-addons-transition-group": "^15.3.2",
     "react-fa": "^4.1.2",

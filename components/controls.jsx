@@ -3,17 +3,13 @@ import React from "react";
 import { Button, Progress } from "reactstrap";
 import { Icon } from "react-fa";
 
+import "./controls.scss";
+
 const propTypes = {
   progress: React.PropTypes.number.isRequired,
   playing: React.PropTypes.bool.isRequired,
   onPlay: React.PropTypes.func.isRequired,
   onPause: React.PropTypes.func.isRequired
-};
-
-const styles = {
-  progress: {
-    margin: "0"
-  }
 };
 
 class Controls extends React.Component {
@@ -27,8 +23,8 @@ class Controls extends React.Component {
 
   render() {
     return (
-      <div className="text-xs-center">
-        <Progress value={this.props.progress} style={styles.progress} />
+      <div className="controls text-xs-center">
+        <Progress value={this.props.progress} className="progress" />
         <Button color="danger"
                 onClick={this.handleToggleClick.bind(this)}>
           <Icon name={this.props.playing ? "pause" : "play"} />
