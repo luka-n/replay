@@ -25,7 +25,7 @@ class TrackList extends React.Component {
   }
 
   async getTracks() {
-    const tracks = await axios.get(`/tracks`);
+    const tracks = await axios.get(`/api/tracks`);
     this.setState({tracks: tracks.data});
   }
 

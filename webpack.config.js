@@ -28,5 +28,13 @@ module.exports = {
         loader: "file-loader"
       }
     ]
+  },
+  devServer: {
+    inline: true,
+    proxy: {
+      "/api": {
+        target: "http://localhost:9090"
+      }
+    }
   }
 };
