@@ -1,9 +1,10 @@
 import React from "react";
 
-import { Button } from "reactstrap";
+import { Button, Progress } from "reactstrap";
 import { Icon } from "react-fa";
 
 const propTypes = {
+  progress: React.PropTypes.number.isRequired,
   onPlay: React.PropTypes.func.isRequired,
   onPause: React.PropTypes.func.isRequired
 };
@@ -20,6 +21,7 @@ class Controls extends React.Component {
   render() {
     return (
       <div className="text-xs-center">
+        <Progress value={this.props.progress} />
         <Button color="danger"
                 onClick={this.handlePlayClick.bind(this)}>
           <Icon name="play" />

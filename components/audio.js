@@ -1,7 +1,5 @@
 import React from "react";
 
-import { Progress } from "reactstrap";
-
 import Controls from "./controls";
 
 const propTypes = {
@@ -48,8 +46,8 @@ class Audio extends React.Component {
         <audio src={this.audioSrc()}
                ref={this.setAudioTag.bind(this)}>
         </audio>
-        <Progress value={this.state.progress} />
-        <Controls onPlay={this.handlePlay.bind(this)}
+        <Controls progress={this.state.progress}
+                  onPlay={this.handlePlay.bind(this)}
                   onPause={this.handlePause.bind(this)} />
       </div>
     );
