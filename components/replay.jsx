@@ -29,7 +29,13 @@ export default class Replay extends React.Component {
         <Navbar dark color="inverse" fixed="top">
           <NavbarBrand href="/">replay</NavbarBrand>
         </Navbar>
-        <TrackList onSelect={this.handleTrackSelect.bind(this)} />
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-xs-12">
+              <TrackList onSelect={this.handleTrackSelect.bind(this)} />
+            </div>
+          </div>
+        </div>
         <Navbar light color="faded" fixed="bottom" style={styles.bottomNavbar}>
           <Audio track={this.state.track} />
         </Navbar>
