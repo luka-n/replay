@@ -57,7 +57,8 @@ export default class Replay extends React.Component {
           </div>
         </div>
         <Navbar light color="faded" fixed="bottom" className="bottom-navbar">
-          <Audio track={this.state.tracks[this.state.currentTrackIndex]} />
+          <Audio key={this.state.currentTrackIndex}
+                 track={this.state.tracks[this.state.currentTrackIndex]} />
         </Navbar>
       </div>
     );
