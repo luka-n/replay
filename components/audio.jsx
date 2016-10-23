@@ -15,6 +15,7 @@ class Audio extends React.Component {
       duration: null
     }
   }
+
   audioSrc() {
     return this.props.track ? `/api/tracks/${this.props.track._id}` : null;
   }
