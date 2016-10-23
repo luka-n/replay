@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 
 import { Navbar, NavbarBrand } from "reactstrap";
@@ -12,12 +13,22 @@ export default class Replay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      track: null
+      tracks: [],
+      currentTrackIndex: null
     };
   }
 
-  handleTrackSelect(track) {
-    this.setState({track: track});
+  componentDidMount() {
+    this.getTracks();
+  }
+
+  async getTracks() {
+    const tracks = await axios.get(`/api/tracks`);
+    this.setState({tracks: tracks.data});
+  }
+
+  handleTrackSelect(index) {
+    this.setState({currentTrackIndex: index});
   }
 
   render() {
@@ -39,12 +50,14 @@ export default class Replay extends React.Component {
               </Nav>
             </div>
             <div className="col-xs-10 offset-xs-2">
-              <TrackList onSelect={this.handleTrackSelect.bind(this)} />
+              <TrackList tracks={this.state.tracks}
+                         currentTrackIndex={this.state.currentTrackIndex}
+                         onSelect={this.handleTrackSelect.bind(this)} />
             </div>
           </div>
         </div>
         <Navbar light color="faded" fixed="bottom" className="bottom-navbar">
-          <Audio track={this.state.track} />
+          <Audio track={this.state.tracks[this.state.currentTrackIndex]} />
         </Navbar>
       </div>
     );
