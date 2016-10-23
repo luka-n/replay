@@ -92,7 +92,8 @@ class Audio extends React.Component {
   render() {
     return (
       <div>
-        <audio src={this.audioSrc()}
+        <audio autoPlay
+               src={this.audioSrc()}
                ref={this.setAudioTag.bind(this)}>
         </audio>
         <Controls progress={this.state.currentTime / this.state.duration * 100}
