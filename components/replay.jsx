@@ -14,7 +14,10 @@ export default class Replay extends React.Component {
     super(props);
     this.state = {
       tracks: [],
-      currentTrackIndex: null
+      currentTrackIndex: null,
+      playing: false,
+      currentTime: null,
+      duration: null
     };
   }
 
@@ -29,6 +32,30 @@ export default class Replay extends React.Component {
 
   handleTrackSelect(index) {
     this.setState({currentTrackIndex: index});
+  }
+
+  handlePlayingEvent() {
+    this.setState({playing: true});
+  }
+
+  handlePauseEvent() {
+    this.setState({playing: false});
+  }
+
+  handleEndedEvent() {
+    this.setState({playing: false});
+  }
+
+  handleTimeupdateEvent(currentTime) {
+    this.setState({
+      currentTime: currentTime
+    });
+  }
+
+  handleDurationchangeEvent(duration) {
+    this.setState({
+      duration: duration
+    });
   }
 
   render() {
@@ -58,7 +85,15 @@ export default class Replay extends React.Component {
         </div>
         <Navbar light color="faded" fixed="bottom" className="bottom-navbar">
           <Audio key={this.state.currentTrackIndex}
-                 track={this.state.tracks[this.state.currentTrackIndex]} />
+                 track={this.state.tracks[this.state.currentTrackIndex]}
+                 playing={this.state.playing}
+                 currentTime={this.state.currentTime}
+                 duration={this.state.duration}
+                 onPlaying={this.handlePlayingEvent.bind(this)}
+                 onPause={this.handlePauseEvent.bind(this)}
+                 onEnded={this.handleEndedEvent.bind(this)}
+                 onTimeupdate={this.handleTimeupdateEvent.bind(this)}
+                 onDurationchange={this.handleDurationchangeEvent.bind(this)} />
         </Navbar>
       </div>
     );

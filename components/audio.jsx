@@ -3,18 +3,21 @@ import React from "react";
 import Controls from "./controls";
 
 const propTypes = {
-  track: React.PropTypes.object
+  track: React.PropTypes.object,
+  playing: React.PropTypes.bool,
+  currentTime: React.PropTypes.number,
+  duration: React.PropTypes.number,
+  onPlaying: React.PropTypes.func.isRequired,
+  onPause: React.PropTypes.func.isRequired,
+  onEnded: React.PropTypes.func.isRequired,
+  onTimeupdate: React.PropTypes.func.isRequired,
+  onDurationchange: React.PropTypes.func.isRequired
 };
 
 class Audio extends React.Component {
   constructor(props) {
     super(props);
     this.bindHandlers();
-    this.state = {
-      playing: false,
-      currentTime: null,
-      duration: null
-    }
   }
 
   audioSrc() {
@@ -25,26 +28,31 @@ class Audio extends React.Component {
     this._audioTag = audioTag;
   }
 
+  handleTimeupdate() {
+    this.props.onTimeupdate(this._audioTag.currentTime);
+  }
+
+  handleDurationchange() {
+    this.props.onDurationchange(this._audioTag.duration);
+  }
+
   bindHandlers() {
-    this.playingHandler = this.handlePlayingEvent.bind(this);
-    this.pauseHandler = this.handlePauseEvent.bind(this);
-    this.endedHandler = this.handleEndedEvent.bind(this);
-    this.timeupdateHandler = this.handleTimeupdateEvent.bind(this);
-    this.durationchangeHandler = this.handleDurationchangeEvent.bind(this);
+    this.timeupdateHandler = this.handleTimeupdate.bind(this);
+    this.durationchangeHandler = this.handleDurationchange.bind(this);
   }
 
   addHandlers() {
-    this._audioTag.addEventListener("playing", this.playingHandler);
-    this._audioTag.addEventListener("pause", this.pauseHandler);
-    this._audioTag.addEventListener("ended", this.endedHandler);
+    this._audioTag.addEventListener("playing", this.props.onPlaying);
+    this._audioTag.addEventListener("pause", this.props.onPause);
+    this._audioTag.addEventListener("ended", this.props.onEnded);
     this._audioTag.addEventListener("timeupdate", this.timeupdateHandler);
     this._audioTag.addEventListener("durationchange", this.durationchangeHandler);
   }
 
   removeHandlers() {
-    this._audioTag.removeEventListener("playing", this.playingHandler);
-    this._audioTag.removeEventListener("pause", this.pauseHandler);
-    this._audioTag.removeEventListener("ended", this.endedHandler);
+    this._audioTag.removeEventListener("playing", this.props.onPlaying);
+    this._audioTag.removeEventListener("pause", this.props.onPause);
+    this._audioTag.removeEventListener("ended", this.props.onEnded);
     this._audioTag.removeEventListener("timeupdate", this.timeupdateHandler);
     this._audioTag.removeEventListener("durationchange", this.durationchangeHandler);
   }
@@ -55,30 +63,6 @@ class Audio extends React.Component {
 
   componentWillUnmount() {
     this.removeHandlers();
-  }
-
-  handlePlayingEvent() {
-    this.setState({playing: true});
-  }
-
-  handlePauseEvent() {
-    this.setState({playing: false});
-  }
-
-  handleEndedEvent() {
-    this.setState({playing: false, progress: 0});
-  }
-
-  handleTimeupdateEvent() {
-    this.setState({
-      currentTime: this._audioTag.currentTime
-    });
-  }
-
-  handleDurationchangeEvent() {
-    this.setState({
-      duration: this._audioTag.duration
-    });
   }
 
   handlePlayClick() {
@@ -96,8 +80,8 @@ class Audio extends React.Component {
                src={this.audioSrc()}
                ref={this.setAudioTag.bind(this)}>
         </audio>
-        <Controls progress={this.state.currentTime / this.state.duration * 100}
-                  playing={this.state.playing}
+        <Controls progress={this.props.currentTime / this.props.duration * 100}
+                  playing={this.props.playing}
                   onPlay={this.handlePlayClick.bind(this)}
                   onPause={this.handlePauseClick.bind(this)} />
       </div>
