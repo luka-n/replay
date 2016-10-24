@@ -1,12 +1,8 @@
 import React from "react";
 
-import Controls from "./controls";
-
 const propTypes = {
   track: React.PropTypes.object,
-  playing: React.PropTypes.bool,
-  currentTime: React.PropTypes.number,
-  duration: React.PropTypes.number,
+  playing: React.PropTypes.bool.isRequired,
   onPlaying: React.PropTypes.func.isRequired,
   onPause: React.PropTypes.func.isRequired,
   onEnded: React.PropTypes.func.isRequired,
@@ -65,26 +61,20 @@ class Audio extends React.Component {
     this.removeHandlers();
   }
 
-  handlePlayClick() {
-    this._audioTag.play();
-  }
-
-  handlePauseClick() {
-    this._audioTag.pause();
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.playing && !this.props.playing) {
+      this._audioTag.pause();
+    } else if (!prevProps.playing && this.props.playing) {
+      this._audioTag.play();
+    }
   }
 
   render() {
     return (
-      <div>
-        <audio autoPlay
-               src={this.audioSrc()}
-               ref={this.setAudioTag.bind(this)}>
-        </audio>
-        <Controls progress={this.props.currentTime / this.props.duration * 100}
-                  playing={this.props.playing}
-                  onPlay={this.handlePlayClick.bind(this)}
-                  onPause={this.handlePauseClick.bind(this)} />
-      </div>
+      <audio autoPlay
+             src={this.audioSrc()}
+             ref={this.setAudioTag.bind(this)}>
+      </audio>
     );
   }
 }

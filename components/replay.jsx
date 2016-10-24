@@ -5,6 +5,7 @@ import { Navbar, NavbarBrand } from "reactstrap";
 import { Nav, NavItem, NavLink } from "reactstrap";
 
 import Audio from "./audio";
+import Controls from "./controls";
 import TrackList from "./track-list";
 
 import "./replay.scss";
@@ -58,6 +59,14 @@ export default class Replay extends React.Component {
     });
   }
 
+  handlePlayClick() {
+    this.setState({playing: true});
+  }
+
+  handlePauseClick() {
+    this.setState({playing: false});
+  }
+
   render() {
     return (
       <div className="replay">
@@ -87,13 +96,15 @@ export default class Replay extends React.Component {
           <Audio key={this.state.currentTrackIndex}
                  track={this.state.tracks[this.state.currentTrackIndex]}
                  playing={this.state.playing}
-                 currentTime={this.state.currentTime}
-                 duration={this.state.duration}
                  onPlaying={this.handlePlayingEvent.bind(this)}
                  onPause={this.handlePauseEvent.bind(this)}
                  onEnded={this.handleEndedEvent.bind(this)}
                  onTimeupdate={this.handleTimeupdateEvent.bind(this)}
                  onDurationchange={this.handleDurationchangeEvent.bind(this)} />
+          <Controls progress={this.state.currentTime / this.state.duration * 100}
+                    playing={this.state.playing}
+                    onPlay={this.handlePlayClick.bind(this)}
+                    onPause={this.handlePauseClick.bind(this)} />
         </Navbar>
       </div>
     );
