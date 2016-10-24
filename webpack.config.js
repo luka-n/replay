@@ -1,5 +1,5 @@
 module.exports = {
-  entry: ["babel-polyfill", "./index.js"],
+  entry: ["babel-polyfill", "./app/index.js"],
   output: {
     path: __dirname + "/dist",
     filename: "bundle.js"
@@ -35,6 +35,7 @@ module.exports = {
     ]
   },
   devServer: {
+    contentBase: __dirname + "/app",
     port: 7070,
     inline: true,
     proxy: {
