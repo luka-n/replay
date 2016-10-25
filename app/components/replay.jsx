@@ -2,8 +2,8 @@ import React from "react";
 
 import { Navbar, NavbarBrand } from "reactstrap";
 import { Nav, NavItem, NavLink } from "reactstrap";
+import { IndexLink, Link } from "react-router";
 
-import Library from "../containers/library";
 import Audio from "../containers/audio";
 import Controls from "../containers/controls";
 
@@ -21,15 +21,22 @@ export default class Replay extends React.Component {
             <div className="sidebar col-xs-2">
               <Nav pills stacked>
                 <NavItem>
-                  <NavLink active href>Library</NavLink>
+                  <IndexLink to="/"
+                             activeClassName="active"
+                             className="nav-link">
+                    Queue
+                  </IndexLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href>Queue</NavLink>
+                  <Link to="/library"
+                        activeClassName="active"
+                        className="nav-link">
+                    Library</Link>
                 </NavItem>
               </Nav>
             </div>
             <div className="col-xs-10 offset-xs-2">
-              <Library />
+              {this.props.children}
             </div>
           </div>
         </div>

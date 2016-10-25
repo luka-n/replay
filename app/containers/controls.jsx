@@ -7,8 +7,8 @@ import { updatePlayingState } from "../actions";
 
 function mapStateToProps(state) {
   return {
-    progress: state.currentTime / state.duration * 100,
-    playing: state.playing
+    progress: state.default.currentTime / state.default.duration * 100,
+    playing: state.default.playing
   };
 }
 

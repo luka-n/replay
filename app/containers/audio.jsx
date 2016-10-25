@@ -11,8 +11,8 @@ import {
 
 function mapStateToProps(state) {
   return {
-    track: state.tracks[state.currentTrackIndex],
-    playing: state.playing
+    track: state.default.tracks[state.default.currentTrackIndex],
+    playing: state.default.playing
   };
 }
 

@@ -7,8 +7,8 @@ import { selectTrack, loadTracks } from "../actions";
 
 function mapStateToProps(state) {
   return {
-    tracks: state.tracks,
-    currentTrackIndex: state.currentTrackIndex
+    tracks: state.default.tracks,
+    currentTrackIndex: state.default.currentTrackIndex
   };
 }
 
