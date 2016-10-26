@@ -10,39 +10,47 @@ const initialState = {
 export default (state=initialState, action) => {
   switch (action.type) {
   case "RECEIVE_TRACKS":
-    return Object.assign({}, state, {
+    return {
+      ...state,
       tracks: action.tracks
-    });
+    };
   case "SELECT_TRACK":
-    return Object.assign({}, state, {
+    return {
+      ...state,
       currentTrackIndex: action.trackIndex
-    });
+    };
   case "ENQUEUE_TRACK":
-    return Object.assign({}, state, {
+    return {
+      ...state,
       queue: state.queue.concat(state.tracks[action.trackIndex])
-    });
+    };
   case "END_TRACK":
     if (state.queue[state.currentTrackIndex + 1]) {
-      return Object.assign({}, state, {
+      return {
+        ...state,
         currentTrackIndex: state.currentTrackIndex + 1
-      });
+      };
     } else {
-      return Object.assign({}, state, {
+      return {
+        ...state,
         playing: false
-      });
+      };
     }
   case "UPDATE_PLAYING_STATE":
-    return Object.assign({}, state, {
+    return {
+      ...state,
       playing: action.playingState
-    });
+    };
   case "UPDATE_CURRENT_TIME":
-    return Object.assign({}, state, {
+    return {
+      ...state,
       currentTime: action.currentTime
-    });
+    };
   case "UPDATE_DURATION":
-    return Object.assign({}, state, {
+    return {
+      ...state,
       duration: action.duration
-    });
+    };
   default:
     return state;
   }
