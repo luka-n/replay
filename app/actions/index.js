@@ -23,6 +23,19 @@ export function selectTrack(trackIndex) {
   };
 }
 
+export function enqueueTrack(trackIndex) {
+  return {
+    type: "ENQUEUE_TRACK",
+    trackIndex
+  };
+}
+
+export function endTrack() {
+  return {
+    type: "END_TRACK"
+  };
+}
+
 export function updatePlayingState(playingState) {
   return {
     type: "UPDATE_PLAYING_STATE",

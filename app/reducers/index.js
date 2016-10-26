@@ -1,5 +1,6 @@
 const initialState = {
   tracks: [],
+  queue: [],
   currentTrackIndex: null,
   playing: false,
   currentTime: null,
@@ -16,6 +17,20 @@ export default (state=initialState, action) => {
     return Object.assign({}, state, {
       currentTrackIndex: action.trackIndex
     });
+  case "ENQUEUE_TRACK":
+    return Object.assign({}, state, {
+      queue: state.queue.concat(state.tracks[action.trackIndex])
+    });
+  case "END_TRACK":
+    if (state.queue[state.currentTrackIndex + 1]) {
+      return Object.assign({}, state, {
+        currentTrackIndex: state.currentTrackIndex + 1
+      });
+    } else {
+      return Object.assign({}, state, {
+        playing: false
+      });
+    }
   case "UPDATE_PLAYING_STATE":
     return Object.assign({}, state, {
       playing: action.playingState

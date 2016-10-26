@@ -3,18 +3,17 @@ import { connect } from "react-redux";
 
 import Library from "../components/library";
 
-import { selectTrack, loadTracks } from "../actions";
+import { enqueueTrack, loadTracks } from "../actions";
 
 function mapStateToProps(state) {
   return {
-    tracks: state.default.tracks,
-    currentTrackIndex: state.default.currentTrackIndex
+    tracks: state.default.tracks
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    onSelect: trackIndex => dispatch(selectTrack(trackIndex)),
+    onSelect: trackIndex => dispatch(enqueueTrack(trackIndex)),
     loadTracks: () => dispatch(loadTracks())
   };
 }
