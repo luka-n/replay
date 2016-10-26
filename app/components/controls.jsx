@@ -1,7 +1,9 @@
 import React from "react";
 
-import { Button, Progress } from "reactstrap";
+import { Button } from "reactstrap";
 import { Icon } from "react-fa";
+
+import ProgressBar from "./progress-bar";
 
 import "./controls.scss";
 
@@ -24,7 +26,7 @@ class Controls extends React.Component {
   render() {
     return (
       <div className="controls text-xs-center">
-        <Progress value={this.props.progress} className="progress" />
+        <ProgressBar value={this.props.progress} />
         <Button color="danger"
                 onClick={this.handleToggleClick.bind(this)}>
           <Icon name={this.props.playing ? "pause" : "play"} />
