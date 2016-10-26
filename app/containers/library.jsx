@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import Library from "../components/library";
 
-import { enqueueTrack, loadTracks } from "../actions";
+import { enqueueTrack, enqueueAlbum, enqueueArtist, loadTracks } from "../actions";
 
 function mapStateToProps(state) {
   return {
@@ -14,6 +14,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onSelect: trackIndex => dispatch(enqueueTrack(trackIndex)),
+    onAlbumSelect: trackIndex => dispatch(enqueueAlbum(trackIndex)),
+    onArtistSelect: trackIndex => dispatch(enqueueArtist(trackIndex)),
     loadTracks: () => dispatch(loadTracks())
   };
 }

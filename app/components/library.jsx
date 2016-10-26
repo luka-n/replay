@@ -6,7 +6,9 @@ const propTypes = {
   tracks: React.PropTypes.array.isRequired,
   currentTrackIndex: React.PropTypes.number,
   loadTracks: React.PropTypes.func.isRequired,
-  onSelect: React.PropTypes.func.isRequired
+  onSelect: React.PropTypes.func.isRequired,
+  onAlbumSelect: React.PropTypes.func.isRequired,
+  onArtistSelect: React.PropTypes.func.isRequired
 };
 
 class Library extends React.Component {
@@ -18,7 +20,9 @@ class Library extends React.Component {
     return (
       <TrackList tracks={this.props.tracks}
                  currentTrackIndex={this.props.currentTrackIndex}
-                 onSelect={this.props.onSelect} />
+                 onSelect={this.props.onSelect}
+                 onAlbumSelect={this.props.onAlbumSelect}
+                 onArtistSelect={this.props.onArtistSelect} />
     );
   }
 }

@@ -30,6 +30,20 @@ export function enqueueTrack(trackIndex) {
   };
 }
 
+export function enqueueAlbum(trackIndex) {
+  return {
+    type: "ENQUEUE_ALBUM",
+    trackIndex
+  };
+}
+
+export function enqueueArtist(trackIndex) {
+  return {
+    type: "ENQUEUE_ARTIST",
+    trackIndex
+  };
+}
+
 export function endTrack() {
   return {
     type: "END_TRACK"

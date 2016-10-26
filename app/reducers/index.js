@@ -24,6 +24,20 @@ export default (state=initialState, action) => {
       ...state,
       queue: state.queue.concat(state.tracks[action.trackIndex])
     };
+  case "ENQUEUE_ALBUM":
+    const album = state.tracks[action.trackIndex].tags.album;
+    const albumTracks = state.tracks.filter(track => track.tags.album === album);
+    return {
+      ...state,
+      queue: state.queue.concat(albumTracks)
+    };
+  case "ENQUEUE_ARTIST":
+    const artist = state.tracks[action.trackIndex].tags.artist;
+    const artistTracks = state.tracks.filter(track => track.tags.artist === artist);
+    return {
+      ...state,
+      queue: state.queue.concat(artistTracks)
+    };
   case "END_TRACK":
     if (state.queue[state.currentTrackIndex + 1]) {
       return {

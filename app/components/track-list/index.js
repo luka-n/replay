@@ -8,12 +8,22 @@ import Track from "./track";
 const propTypes = {
   tracks: React.PropTypes.array.isRequired,
   currentTrackIndex: React.PropTypes.number,
-  onSelect: React.PropTypes.func.isRequired
+  onSelect: React.PropTypes.func.isRequired,
+  onAlbumSelect: React.PropTypes.func.isRequired,
+  onArtistSelect: React.PropTypes.func.isRequired
 };
 
 class TrackList extends React.Component {
   handleTrackSelect(index) {
     this.props.onSelect(index);
+  }
+
+  handleAlbumSelect(index) {
+    this.props.onAlbumSelect(index);
+  }
+
+  handleArtistSelect(index) {
+    this.props.onArtistSelect(index);
   }
 
   render() {
@@ -24,7 +34,9 @@ class TrackList extends React.Component {
                track={track}
                isOdd={index % 2 === 0}
                isSelected={index === this.props.currentTrackIndex}
-               onSelect={this.handleTrackSelect.bind(this, index)} />
+               onSelect={this.handleTrackSelect.bind(this, index)}
+               onSelectAlbum={this.handleAlbumSelect.bind(this, index)}
+               onSelectArtist={this.handleArtistSelect.bind(this, index)} />
       );
     });
     return (
