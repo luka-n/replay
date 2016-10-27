@@ -1,5 +1,11 @@
+var webpack = require("webpack");
+
 module.exports = {
-  entry: ["babel-polyfill", "./app/index.jsx"],
+  entry: [
+    "babel-polyfill",
+    "webpack/hot/only-dev-server",
+    "./app/index.jsx"
+  ],
   output: {
     path: __dirname + "/dist",
     filename: "bundle.js"
@@ -39,11 +45,15 @@ module.exports = {
     port: 7070,
     inline: true,
     historyApiFallback: true,
+    hot: true,
     proxy: {
       "/api": {
         target: "http://localhost:9090"
       }
     }
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
   devtool: "source-map"
 };
