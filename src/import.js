@@ -11,7 +11,9 @@ async function importFile(file) {
   const track = await db.findOne({path: file});
   if (!track) {
     const tags = await id3.read(file);
-    db.insert({path: file, tags: tags.data});
+    const regex = new RegExp(`^${config.musicDir}/*`);
+    const relpath = file.replace(regex, "");
+    db.insert({path: relpath, tags: tags.data});
   }
 }
 

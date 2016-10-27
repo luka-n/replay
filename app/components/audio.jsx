@@ -1,13 +1,17 @@
 import React from "react";
 
+import config from "../../config";
+
 const propTypes = {
   track: React.PropTypes.object,
   playing: React.PropTypes.bool.isRequired,
+  seekTime: React.PropTypes.number,
   onPlaying: React.PropTypes.func.isRequired,
   onPause: React.PropTypes.func.isRequired,
   onEnded: React.PropTypes.func.isRequired,
   onTimeupdate: React.PropTypes.func.isRequired,
-  onDurationchange: React.PropTypes.func.isRequired
+  onDurationchange: React.PropTypes.func.isRequired,
+  clearSeekTime: React.PropTypes.func.isRequired
 };
 
 class Audio extends React.Component {
@@ -17,7 +21,8 @@ class Audio extends React.Component {
   }
 
   audioSrc() {
-    return this.props.track ? `/api/tracks/${this.props.track._id}` : null;
+    return this.props.track ?
+      `${config.fileServer}/${this.props.track.path}` : null;
   }
 
   setAudioTag(audioTag) {
@@ -66,6 +71,10 @@ class Audio extends React.Component {
       this._audioTag.pause();
     } else if (!prevProps.playing && this.props.playing) {
       this._audioTag.play();
+    }
+    if (this.props.seekTime) {
+      this._audioTag.currentTime = this.props.seekTime;
+      this.props.clearSeekTime();
     }
   }
 

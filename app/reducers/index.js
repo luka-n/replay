@@ -4,7 +4,8 @@ const initialState = {
   currentTrackIndex: null,
   playing: false,
   currentTime: null,
-  duration: null
+  duration: null,
+  seekTime: null
 };
 
 export default (state=initialState, action) => {
@@ -64,6 +65,16 @@ export default (state=initialState, action) => {
     return {
       ...state,
       duration: action.duration
+    };
+  case "UPDATE_SEEK_TIME":
+    return {
+      ...state,
+      seekTime: action.seekTime
+    };
+  case "CLEAR_SEEK_TIME":
+    return {
+      ...state,
+      seekTime: null
     };
   default:
     return state;

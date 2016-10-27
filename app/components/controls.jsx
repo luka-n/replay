@@ -8,10 +8,12 @@ import ProgressBar from "./progress-bar";
 import "./controls.scss";
 
 const propTypes = {
-  progress: React.PropTypes.number.isRequired,
+  currentTime: React.PropTypes.number,
+  duration: React.PropTypes.number,
   playing: React.PropTypes.bool.isRequired,
   onPlay: React.PropTypes.func.isRequired,
-  onPause: React.PropTypes.func.isRequired
+  onPause: React.PropTypes.func.isRequired,
+  onSeek: React.PropTypes.func.isRequired
 };
 
 class Controls extends React.Component {
@@ -23,10 +25,16 @@ class Controls extends React.Component {
     }
   }
 
+  handleProgressChange(newValue) {
+    const seekTime = this.props.duration / 100 * newValue;
+    this.props.onSeek(seekTime);
+  }
+
   render() {
     return (
       <div className="controls text-xs-center">
-        <ProgressBar value={this.props.progress} />
+        <ProgressBar value={this.props.currentTime / this.props.duration * 100}
+                     onChange={this.handleProgressChange.bind(this)} />
         <Button color="danger"
                 onClick={this.handleToggleClick.bind(this)}>
           <Icon name={this.props.playing ? "pause" : "play"} />

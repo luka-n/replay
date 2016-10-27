@@ -70,3 +70,16 @@ export function updateDuration(duration) {
     duration
   }
 }
+
+export function updateSeekTime(seekTime) {
+  return {
+    type: "UPDATE_SEEK_TIME",
+    seekTime
+  }
+}
+
+export function clearSeekTime() {
+  return {
+    type: "CLEAR_SEEK_TIME"
+  }
+}

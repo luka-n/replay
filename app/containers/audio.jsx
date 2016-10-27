@@ -7,13 +7,15 @@ import {
   updatePlayingState,
   updateCurrentTime,
   updateDuration,
-  endTrack
+  endTrack,
+  clearSeekTime
 } from "../actions";
 
 function mapStateToProps(state) {
   return {
     track: state.default.queue[state.default.currentTrackIndex],
-    playing: state.default.playing
+    playing: state.default.playing,
+    seekTime: state.default.seekTime
   };
 }
 
@@ -23,7 +25,8 @@ function mapDispatchToProps(dispatch) {
     onPause: () => dispatch(updatePlayingState(false)),
     onEnded: () => dispatch(endTrack()),
     onTimeupdate: (currentTime) => dispatch(updateCurrentTime(currentTime)),
-    onDurationchange: (duration) => dispatch(updateDuration(duration))
+    onDurationchange: (duration) => dispatch(updateDuration(duration)),
+    clearSeekTime: () => dispatch(clearSeekTime())
   };
 }
 
