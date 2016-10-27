@@ -3,7 +3,7 @@ import fs from "fs";
 import Datastore from "nedb-promise";
 import id3 from "music-tag";
 
-import config from "./config"
+import config from "../config"
 
 const db = new Datastore({filename: "db/tracks.db", autoload: true});
 
