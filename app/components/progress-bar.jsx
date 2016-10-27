@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./progress-bar.scss";
-
 const propTypes = {
   value: React.PropTypes.number.isRequired,
   onChange: React.PropTypes.func.isRequired

@@ -5,8 +5,6 @@ import { Icon } from "react-fa";
 
 import ProgressBar from "./progress-bar";
 
-import "./controls.scss";
-
 const propTypes = {
   currentTime: React.PropTypes.number,
   duration: React.PropTypes.number,

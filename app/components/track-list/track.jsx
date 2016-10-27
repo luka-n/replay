@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./track.scss";
-
 const propTypes = {
   track: React.PropTypes.object.isRequired,
   isOdd: React.PropTypes.bool.isRequired,

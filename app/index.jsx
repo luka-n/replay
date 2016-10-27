@@ -13,8 +13,6 @@ import Queue from "./containers/queue";
 
 import * as reducers from "./reducers";
 
-import "./index.scss";
-
 const reducer = combineReducers({
   ...reducers,
   routing: routerReducer

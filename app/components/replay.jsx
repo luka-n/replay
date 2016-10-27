@@ -7,8 +7,6 @@ import { IndexLink, Link } from "react-router";
 import Audio from "../containers/audio";
 import Controls from "../containers/controls";
 
-import "./replay.scss";
-
 export default class Replay extends React.Component {
   render() {
     return (
