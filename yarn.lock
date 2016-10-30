@@ -1706,6 +1706,12 @@ fbjs@^0.8.4:
     promise "^7.1.1"
     ua-parser-js "^0.7.9"
 
+fela:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/fela/-/fela-3.0.2.tgz#278873e28bd2f4f14fe86eeac95f2408d31d3b39"
+  dependencies:
+    hyphenate-style-name "1.0.1"
+
 file-loader@^0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-0.9.0.tgz#1d2daddd424ce6d1b07cfe3f79731bed3617ab42"
@@ -2081,6 +2087,10 @@ http-signature@~1.1.0:
 https-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.0.tgz#b3ffdfe734b2a3d4a9efd58e8654c91fce86eafd"
+
+hyphenate-style-name@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.1.tgz#bc49b9446e02b4570641afdd29c1ce7609d1b9cc"
 
 iconv-lite@~0.4.13:
   version "0.4.13"
@@ -3517,6 +3527,10 @@ react-fa@^4.1.2:
   resolved "https://registry.yarnpkg.com/react-fa/-/react-fa-4.1.2.tgz#5d828916da05efc1ed58c97531f36120146f1f16"
   dependencies:
     font-awesome "^4.3.0"
+
+react-fela:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-fela/-/react-fela-3.0.1.tgz#60859b674041da7461f7983cbbc3c60f91f54bd6"
 
 react-hot-api@^0.4.5:
   version "0.4.7"

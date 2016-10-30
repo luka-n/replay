@@ -1,5 +1,13 @@
 import React from "react";
 
+import Base from "../base";
+
+import Row from "../table/row";
+import Column from "../table/column";
+
+import Artist from "./artist";
+import Album from "./album";
+
 const propTypes = {
   track: React.PropTypes.object.isRequired,
   isOdd: React.PropTypes.bool.isRequired,
@@ -9,7 +17,7 @@ const propTypes = {
   onSelectArtist: React.PropTypes.func.isRequired
 };
 
-class Track extends React.Component {
+class Track extends Base {
   handleAlbumClick(event) {
     event.stopPropagation();
     this.props.onSelectAlbum();
@@ -20,23 +28,27 @@ class Track extends React.Component {
     this.props.onSelectArtist();
   }
 
+  style() {
+    return {
+      cursor: "pointer"
+    };
+  }
+
   render() {
     return (
-      <tr onClick={this.props.onSelect}
-          className={this.props.isSelected ? "table-info" : null}>
-        <td>{this.props.track.tags.track_number}</td>
-        <td>
-          <span className="artist" onClick={this.handleArtistClick.bind(this)}>
-            {this.props.track.tags.artist}
-          </span>
-        </td>
-        <td>{this.props.track.tags.title}</td>
-        <td>
-          <span className="album" onClick={this.handleAlbumClick.bind(this)}>
-            {this.props.track.tags.album}
-          </span>
-        </td>
-      </tr>
+      <Row onClick={this.props.onSelect}
+           className={this.renderRule(this.style)}>
+        <Column>{this.props.track.tags.track_number}</Column>
+        <Column>
+          <Artist name={this.props.track.tags.artist}
+                  onClick={this.handleArtistClick.bind(this)} />
+        </Column>
+        <Column>{this.props.track.tags.title}</Column>
+        <Column>
+          <Album name={this.props.track.tags.album}
+                  onClick={this.handleAlbumClick.bind(this)} />
+        </Column>
+      </Row>
     );
   }
 }

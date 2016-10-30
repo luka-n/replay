@@ -1,9 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { Table } from "reactstrap";
-
 import Track from "./track";
+
+import Table from "../table";
+import Head from "../table/head";
+import Body from "../table/body";
+import Row from "../table/row";
+import Column from "../table/column";
+import HeadColumn from "../table/head-column";
 
 const propTypes = {
   tracks: React.PropTypes.array.isRequired,
@@ -40,18 +45,18 @@ class TrackList extends React.Component {
       );
     });
     return (
-      <Table hover={true} striped={true}>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Artist</th>
-            <th>Title</th>
-            <th>Album</th>
-          </tr>
-        </thead>
-        <tbody>
+      <Table>
+        <Head>
+          <Row>
+            <HeadColumn>#</HeadColumn>
+            <HeadColumn>Artist</HeadColumn>
+            <HeadColumn>Title</HeadColumn>
+            <HeadColumn>Album</HeadColumn>
+          </Row>
+        </Head>
+        <Body>
           {tracks}
-        </tbody>
+        </Body>
       </Table>
     );
   }
