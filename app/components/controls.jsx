@@ -11,7 +11,9 @@ const propTypes = {
   playing: React.PropTypes.bool.isRequired,
   onPlay: React.PropTypes.func.isRequired,
   onPause: React.PropTypes.func.isRequired,
-  onSeek: React.PropTypes.func.isRequired
+  onSeek: React.PropTypes.func.isRequired,
+  onNext: React.PropTypes.func.isRequired,
+  onPrevious: React.PropTypes.func.isRequired
 };
 
 class Controls extends Base {
@@ -56,8 +58,16 @@ class Controls extends Base {
         <ProgressBar value={this.props.currentTime / this.props.duration * 100}
                      onChange={this.handleProgressChange.bind(this)} />
         <button className={this.renderRule(this.buttonStyle)}
+                onClick={this.props.onPrevious}>
+          <Icon name="step-backward" />
+        </button>
+        <button className={this.renderRule(this.buttonStyle)}
                 onClick={this.handleToggleClick.bind(this)}>
           <Icon name={this.props.playing ? "pause" : "play"} />
+        </button>
+        <button className={this.renderRule(this.buttonStyle)}
+                onClick={this.props.onNext}>
+          <Icon name="step-forward" />
         </button>
       </div>
     );

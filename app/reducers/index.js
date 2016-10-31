@@ -51,6 +51,30 @@ export default (state=initialState, action) => {
         playing: false
       };
     }
+  case "NEXT_TRACK":
+    if (state.queue[state.currentTrackIndex + 1]) {
+      return {
+        ...state,
+        currentTrackIndex: state.currentTrackIndex + 1
+      };
+    } else {
+      return {
+        ...state,
+        playing: false
+      };
+    }
+  case "PREVIOUS_TRACK":
+    if (state.queue[state.currentTrackIndex - 1]) {
+      return {
+        ...state,
+        currentTrackIndex: state.currentTrackIndex - 1
+      };
+    } else {
+      return {
+        ...state,
+        playing: false
+      };
+    }
   case "UPDATE_PLAYING_STATE":
     return {
       ...state,

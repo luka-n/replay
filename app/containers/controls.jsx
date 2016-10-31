@@ -2,7 +2,12 @@ import { connect } from "react-redux";
 
 import Controls from "../components/controls";
 
-import { updatePlayingState, updateSeekTime } from "../actions";
+import {
+  updatePlayingState,
+  updateSeekTime,
+  nextTrack,
+  previousTrack
+} from "../actions";
 
 function mapStateToProps(state) {
   return {
@@ -16,7 +21,9 @@ function mapDispatchToProps(dispatch) {
   return {
     onPlay: () => dispatch(updatePlayingState(true)),
     onPause: () => dispatch(updatePlayingState(false)),
-    onSeek: (seekTime) => dispatch(updateSeekTime(seekTime))
+    onSeek: (seekTime) => dispatch(updateSeekTime(seekTime)),
+    onNext: () => dispatch(nextTrack()),
+    onPrevious: () => dispatch(previousTrack())
   };
 }
 

@@ -50,6 +50,18 @@ export function endTrack() {
   };
 }
 
+export function nextTrack() {
+  return {
+    type: "NEXT_TRACK"
+  };
+}
+
+export function previousTrack() {
+  return {
+    type: "PREVIOUS_TRACK"
+  };
+}
+
 export function updatePlayingState(playingState) {
   return {
     type: "UPDATE_PLAYING_STATE",
