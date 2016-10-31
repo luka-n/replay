@@ -2,16 +2,16 @@ import React from "react";
 
 import TrackList from "./track-list";
 
-const propTypes = {
-  tracks: React.PropTypes.array.isRequired,
-  currentTrackIndex: React.PropTypes.number,
-  loadTracks: React.PropTypes.func.isRequired,
-  onSelect: React.PropTypes.func.isRequired,
-  onAlbumSelect: React.PropTypes.func.isRequired,
-  onArtistSelect: React.PropTypes.func.isRequired
-};
+export default class Library extends React.Component {
+  static propTypes = {
+    tracks: React.PropTypes.array.isRequired,
+    currentTrackIndex: React.PropTypes.number,
+    loadTracks: React.PropTypes.func.isRequired,
+    onSelect: React.PropTypes.func.isRequired,
+    onAlbumSelect: React.PropTypes.func.isRequired,
+    onArtistSelect: React.PropTypes.func.isRequired
+  };
 
-class Library extends React.Component {
   componentDidMount() {
     this.props.loadTracks();
   }
@@ -26,7 +26,3 @@ class Library extends React.Component {
     );
   }
 }
-
-Library.propTypes = propTypes;
-
-export default Library;

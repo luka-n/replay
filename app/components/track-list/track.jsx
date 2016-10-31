@@ -8,16 +8,16 @@ import Column from "../table/column";
 import Artist from "./artist";
 import Album from "./album";
 
-const propTypes = {
-  track: React.PropTypes.object.isRequired,
-  isOdd: React.PropTypes.bool.isRequired,
-  isSelected: React.PropTypes.bool.isRequired,
-  onSelect: React.PropTypes.func.isRequired,
-  onSelectAlbum: React.PropTypes.func.isRequired,
-  onSelectArtist: React.PropTypes.func.isRequired
-};
+export default class Track extends Base {
+  static propTypes = {
+    track: React.PropTypes.object.isRequired,
+    isOdd: React.PropTypes.bool.isRequired,
+    isSelected: React.PropTypes.bool.isRequired,
+    onSelect: React.PropTypes.func.isRequired,
+    onSelectAlbum: React.PropTypes.func.isRequired,
+    onSelectArtist: React.PropTypes.func.isRequired
+  };
 
-class Track extends Base {
   handleAlbumClick(event) {
     event.stopPropagation();
     this.props.onSelectAlbum();
@@ -52,7 +52,3 @@ class Track extends Base {
     );
   }
 }
-
-Track.propTypes = propTypes;
-
-export default Track;

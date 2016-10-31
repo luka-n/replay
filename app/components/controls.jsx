@@ -5,18 +5,18 @@ import { Icon } from "react-fa";
 import Base from "./base";
 import ProgressBar from "./progress-bar";
 
-const propTypes = {
-  currentTime: React.PropTypes.number,
-  duration: React.PropTypes.number,
-  playing: React.PropTypes.bool.isRequired,
-  onPlay: React.PropTypes.func.isRequired,
-  onPause: React.PropTypes.func.isRequired,
-  onSeek: React.PropTypes.func.isRequired,
-  onNext: React.PropTypes.func.isRequired,
-  onPrevious: React.PropTypes.func.isRequired
-};
+export default class Controls extends Base {
+  static propTypes = {
+    currentTime: React.PropTypes.number,
+    duration: React.PropTypes.number,
+    playing: React.PropTypes.bool.isRequired,
+    onPlay: React.PropTypes.func.isRequired,
+    onPause: React.PropTypes.func.isRequired,
+    onSeek: React.PropTypes.func.isRequired,
+    onNext: React.PropTypes.func.isRequired,
+    onPrevious: React.PropTypes.func.isRequired
+  };
 
-class Controls extends Base {
   handleToggleClick() {
     if (this.props.playing) {
       this.props.onPause();
@@ -73,7 +73,3 @@ class Controls extends Base {
     );
   }
 }
-
-Controls.propTypes = propTypes;
-
-export default Controls;

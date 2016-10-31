@@ -2,13 +2,13 @@ import React from "react";
 
 import TrackList from "./track-list";
 
-const propTypes = {
-  tracks: React.PropTypes.array.isRequired,
-  currentTrackIndex: React.PropTypes.number,
-  onSelect: React.PropTypes.func.isRequired
-};
+export default class Queue extends React.Component {
+  static propTypes = {
+    tracks: React.PropTypes.array.isRequired,
+    currentTrackIndex: React.PropTypes.number,
+    onSelect: React.PropTypes.func.isRequired
+  };
 
-class Queue extends React.Component {
   render() {
     return (
       <TrackList tracks={this.props.tracks}
@@ -17,7 +17,3 @@ class Queue extends React.Component {
     )
   }
 }
-
-Queue.propTypes = propTypes;
-
-export default Queue;

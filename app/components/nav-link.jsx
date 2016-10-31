@@ -3,12 +3,12 @@ import Base from  "./base";
 
 import { Link, IndexLink } from "react-router";
 
-const propTypes = {
-  to: React.PropTypes.string.isRequired,
-  index: React.PropTypes.bool
-};
+export default class NavLink extends Base {
+  static propTypes = {
+    to: React.PropTypes.string.isRequired,
+    index: React.PropTypes.bool
+  };
 
-class NavLink extends Base {
   style() {
     return {
       display: "block",
@@ -35,7 +35,3 @@ class NavLink extends Base {
       <Link {...props}>{this.props.children}</Link>
   }
 }
-
-NavLink.propTypes = propTypes;
-
-export default NavLink;

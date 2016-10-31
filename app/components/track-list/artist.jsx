@@ -2,6 +2,10 @@ import React from "react";
 import Base from "../base";
 
 export default class Artist extends Base {
+  static propTypes = {
+    name: React.PropTypes.string.isRequired
+  };
+
   style() {
     return {
       ":hover": {
@@ -23,7 +27,3 @@ export default class Artist extends Base {
     );
   }
 }
-
-Artist.propTypes = {
-  name: React.PropTypes.string.isRequired
-};

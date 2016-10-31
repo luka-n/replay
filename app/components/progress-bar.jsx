@@ -1,12 +1,12 @@
 import React from "react";
 import Base from "./base";
 
-const propTypes = {
-  value: React.PropTypes.number.isRequired,
-  onChange: React.PropTypes.func.isRequired
-};
+export default class ProgressBar extends Base {
+  static propTypes = {
+    value: React.PropTypes.number.isRequired,
+    onChange: React.PropTypes.func.isRequired
+  };
 
-class ProgressBar extends Base {
   handleClick(event) {
     const rect = event.target.getBoundingClientRect();
     const relativeX = event.clientX - rect.left;
@@ -39,7 +39,3 @@ class ProgressBar extends Base {
     )
   }
 }
-
-ProgressBar.propTypes = propTypes;
-
-export default ProgressBar;

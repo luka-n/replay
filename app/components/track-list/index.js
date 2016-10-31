@@ -10,15 +10,15 @@ import Row from "../table/row";
 import Column from "../table/column";
 import HeadColumn from "../table/head-column";
 
-const propTypes = {
-  tracks: React.PropTypes.array.isRequired,
-  currentTrackIndex: React.PropTypes.number,
-  onSelect: React.PropTypes.func.isRequired,
-  onAlbumSelect: React.PropTypes.func.isRequired,
-  onArtistSelect: React.PropTypes.func.isRequired
-};
+export default class TrackList extends React.Component {
+  static propTypes = {
+    tracks: React.PropTypes.array.isRequired,
+    currentTrackIndex: React.PropTypes.number,
+    onSelect: React.PropTypes.func.isRequired,
+    onAlbumSelect: React.PropTypes.func.isRequired,
+    onArtistSelect: React.PropTypes.func.isRequired
+  };
 
-class TrackList extends React.Component {
   handleTrackSelect(index) {
     this.props.onSelect(index);
   }
@@ -61,5 +61,3 @@ class TrackList extends React.Component {
     );
   }
 }
-
-export default TrackList;

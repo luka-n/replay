@@ -2,19 +2,19 @@ import React from "react";
 
 import config from "../../config";
 
-const propTypes = {
-  track: React.PropTypes.object,
-  playing: React.PropTypes.bool.isRequired,
-  seekTime: React.PropTypes.number,
-  onPlaying: React.PropTypes.func.isRequired,
-  onPause: React.PropTypes.func.isRequired,
-  onEnded: React.PropTypes.func.isRequired,
-  onTimeupdate: React.PropTypes.func.isRequired,
-  onDurationchange: React.PropTypes.func.isRequired,
-  clearSeekTime: React.PropTypes.func.isRequired
-};
+export default class Audio extends React.Component {
+  static propTypes = {
+    track: React.PropTypes.object,
+    playing: React.PropTypes.bool.isRequired,
+    seekTime: React.PropTypes.number,
+    onPlaying: React.PropTypes.func.isRequired,
+    onPause: React.PropTypes.func.isRequired,
+    onEnded: React.PropTypes.func.isRequired,
+    onTimeupdate: React.PropTypes.func.isRequired,
+    onDurationchange: React.PropTypes.func.isRequired,
+    clearSeekTime: React.PropTypes.func.isRequired
+  };
 
-class Audio extends React.Component {
   constructor(props) {
     super(props);
     this.bindHandlers();
@@ -87,7 +87,3 @@ class Audio extends React.Component {
     );
   }
 }
-
-Audio.propTypes = propTypes;
-
-export default Audio;
