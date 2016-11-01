@@ -10,7 +10,7 @@ export default class Column extends Base {
 
   render() {
     return (
-      <td className={this.renderRule(this.style)}>
+      <td className={this.renderStyle()}>
         {this.props.children}
       </td>
     );

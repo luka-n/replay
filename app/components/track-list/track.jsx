@@ -37,7 +37,7 @@ export default class Track extends Base {
   render() {
     return (
       <Row onClick={this.props.onSelect}
-           className={this.renderRule(this.style)}>
+           className={this.renderStyle()}>
         <Column>{this.props.track.tags.track_number}</Column>
         <Column>
           <Artist name={this.props.track.tags.artist}

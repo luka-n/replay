@@ -18,7 +18,7 @@ export default class Album extends Base {
   render() {
     const props = {
       ...this.props,
-      className: `${this.props.className} ${this.renderRule(this.style)}`
+      className: `${this.props.className} ${this.renderStyle()}`
     };
     return (
       <span {...props}>

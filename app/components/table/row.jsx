@@ -20,7 +20,7 @@ export default class Row extends Base {
   render() {
     const props = {
       ...this.props,
-      className: `${this.props.className} ${this.renderRule(this.style)}`
+      className: `${this.props.className} ${this.renderStyle()}`
     };
     return (
       <tr {...props}>

@@ -9,14 +9,14 @@ export default class Progress extends Base {
   style() {
     return {
       background: "#2a9fd6",
-      height: "0.4rem"
+      height: "0.4rem",
+      width: `${this.props.value || 0}%`
     };
   }
 
   render() {
     return (
-      <div className={this.renderStyle()}
-           style={{width: `${this.props.value || 0}%`}}>
+      <div className={this.renderStyle()}>
       </div>
     );
   }
