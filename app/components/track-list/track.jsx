@@ -39,6 +39,7 @@ class Track extends React.Component {
       <Row onClick={this.props.onSelect}
            isEven={this.props.isEven}
            isLast={this.props.isLast}
+           isActive={this.props.isSelected}
            style={this.style()}>
         <Column>{this.props.track.tags.track_number}</Column>
         <Column>
