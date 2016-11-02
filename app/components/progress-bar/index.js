@@ -1,8 +1,8 @@
 import React from "react";
-import Base from "../base";
+import Radium from "radium";
 import Progress from "./progress";
 
-export default class ProgressBar extends Base {
+class ProgressBar extends React.Component {
   static propTypes = {
     value: React.PropTypes.number.isRequired,
     onChange: React.PropTypes.func.isRequired
@@ -24,10 +24,12 @@ export default class ProgressBar extends Base {
 
   render() {
     return (
-      <div className={this.renderStyle()}
+      <div style={this.style()}
            onClick={this.handleClick.bind(this)}>
         <Progress value={this.props.value} />
       </div>
     )
   }
 }
+
+export default Radium(ProgressBar);

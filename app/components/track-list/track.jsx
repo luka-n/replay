@@ -1,6 +1,5 @@
 import React from "react";
-
-import Base from "../base";
+import Radium from "radium";
 
 import Row from "../table/row";
 import Column from "../table/column";
@@ -8,10 +7,11 @@ import Column from "../table/column";
 import Artist from "./artist";
 import Album from "./album";
 
-export default class Track extends Base {
+class Track extends React.Component {
   static propTypes = {
     track: React.PropTypes.object.isRequired,
-    isOdd: React.PropTypes.bool.isRequired,
+    isEven: React.PropTypes.bool.isRequired,
+    isLast: React.PropTypes.bool.isRequired,
     isSelected: React.PropTypes.bool.isRequired,
     onSelect: React.PropTypes.func.isRequired,
     onSelectAlbum: React.PropTypes.func.isRequired,
@@ -37,7 +37,9 @@ export default class Track extends Base {
   render() {
     return (
       <Row onClick={this.props.onSelect}
-           className={this.renderStyle()}>
+           isEven={this.props.isEven}
+           isLast={this.props.isLast}
+           style={this.style()}>
         <Column>{this.props.track.tags.track_number}</Column>
         <Column>
           <Artist name={this.props.track.tags.artist}
@@ -52,3 +54,5 @@ export default class Track extends Base {
     );
   }
 }
+
+export default Radium(Track);

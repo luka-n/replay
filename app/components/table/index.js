@@ -1,7 +1,7 @@
 import React from "react";
-import Base from "../base";
+import Radium from "radium";
 
-export default class Table extends Base {
+class Table extends React.Component {
   style() {
     return {
       borderCollapse: "collapse",
@@ -11,9 +11,11 @@ export default class Table extends Base {
 
   render() {
     return (
-      <table className={this.renderStyle()}>
+      <table style={this.style()}>
         {this.props.children}
       </table>
     );
   }
 }
+
+export default Radium(Table);

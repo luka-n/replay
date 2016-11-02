@@ -1,5 +1,5 @@
 import React from "react";
-import Base from "./base";
+import Radium from "radium";
 
 import Audio from "../containers/audio";
 import Controls from "../containers/controls";
@@ -9,7 +9,7 @@ import Sidebar from "./sidebar";
 import Nav from "./nav";
 import Footer from "./footer";
 
-class Replay extends Base {
+class Replay extends React.Component {
   style() {
     return {
       padding: "5.2rem 2rem 5.2rem 14rem"
@@ -18,7 +18,7 @@ class Replay extends Base {
 
   render() {
     return (
-      <div className={this.renderStyle()}>
+      <div style={this.style()}>
         <Header>replay</Header>
         <Sidebar>
           <Nav />
@@ -33,4 +33,4 @@ class Replay extends Base {
   }
 }
 
-export default Replay;
+export default Radium(Replay);

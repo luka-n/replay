@@ -1,7 +1,7 @@
 import React from "react";
-import Base from "./base";
+import Radium from "radium";
 
-export default class Sidebar extends Base {
+class Sidebar extends React.Component {
   style() {
     return {
       background: "#000",
@@ -15,9 +15,11 @@ export default class Sidebar extends Base {
 
   render() {
     return (
-      <div className={this.renderStyle()}>
+      <div style={this.style()}>
         {this.props.children}
       </div>
     );
   }
 }
+
+export default Radium(Sidebar);

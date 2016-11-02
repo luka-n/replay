@@ -1,12 +1,12 @@
 import React from "react";
+import Radium from "radium";
 
 import { Icon } from "react-fa";
 
-import Base from "../base";
 import ProgressBar from "../progress-bar";
 import Button from "./button";
 
-export default class Controls extends Base {
+class Controls extends React.Component {
   static propTypes = {
     currentTime: React.PropTypes.number,
     duration: React.PropTypes.number,
@@ -39,7 +39,7 @@ export default class Controls extends Base {
 
   render() {
     return (
-      <div className={this.renderStyle()}>
+      <div style={this.style()}>
         <ProgressBar value={this.props.currentTime / this.props.duration * 100}
                      onChange={this.handleProgressChange.bind(this)} />
         <Button onClick={this.props.onPrevious}>
@@ -55,3 +55,5 @@ export default class Controls extends Base {
     );
   }
 }
+
+export default Radium(Controls);

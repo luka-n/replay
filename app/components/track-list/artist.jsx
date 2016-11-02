@@ -1,9 +1,10 @@
 import React from "react";
-import Base from "../base";
+import Radium from "radium";
 
-export default class Artist extends Base {
+class Artist extends React.Component {
   static propTypes = {
-    name: React.PropTypes.string.isRequired
+    name: React.PropTypes.string.isRequired,
+    onClick: React.PropTypes.func
   };
 
   style() {
@@ -16,14 +17,12 @@ export default class Artist extends Base {
   }
 
   render() {
-    const props = {
-      ...this.props,
-      className: `${this.props.className} ${this.renderStyle()}`
-    };
     return (
-      <span {...props}>
+      <span onClick={this.props.onClick} style={this.style()}>
         {this.props.name}
       </span>
     );
   }
 }
+
+export default Radium(Artist);

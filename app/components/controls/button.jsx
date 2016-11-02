@@ -1,7 +1,11 @@
 import React from "react";
-import Base from "../base";
+import Radium from "radium";
 
-export default class Button extends Base {
+class Button extends React.Component {
+  static propTypes = {
+    onClick: React.PropTypes.func
+  };
+
   style() {
     return {
       background: "#000",
@@ -19,14 +23,12 @@ export default class Button extends Base {
   }
 
   render() {
-    const props = {
-      ...this.props,
-      className: `${this.props.className} ${this.renderStyle()}`
-    };
     return (
-      <button {...props}>
+      <button onClick={this.props.onClick} style={this.style()}>
         {this.props.children}
       </button>
     );
   }
 }
+
+export default Radium(Button);

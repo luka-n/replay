@@ -1,7 +1,7 @@
 import React from "react";
-import Base from "../base";
+import Radium from "radium";
 
-export default class Progress extends Base {
+class Progress extends React.Component {
   static propTypes = {
     value: React.PropTypes.number.isRequired
   };
@@ -16,8 +16,10 @@ export default class Progress extends Base {
 
   render() {
     return (
-      <div className={this.renderStyle()}>
+      <div style={this.style()}>
       </div>
     );
   }
 }
+
+export default Radium(Progress);

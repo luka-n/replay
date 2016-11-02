@@ -1,8 +1,8 @@
 import React from "react";
-import Base from "./base";
+import Radium from "radium";
 import NavLink from "./nav-link";
 
-export default class Nav extends Base {
+class Nav extends React.Component {
   style() {
     return {
       background: "#333",
@@ -12,10 +12,12 @@ export default class Nav extends Base {
 
   render() {
     return (
-      <div className={this.renderStyle()}>
+      <div style={this.style()}>
         <NavLink index to="/">Queue</NavLink>
-        <NavLink to="/library">Library</NavLink>
+        <NavLink last to="/library">Library</NavLink>
       </div>
     );
   }
 }
+
+export default Radium(Nav);

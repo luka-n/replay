@@ -1,31 +1,30 @@
 import React from "react";
-import Base from "../base";
+import Radium from "radium";
 
-export default class Row extends Base {
+class Row extends React.Component {
+  static propTypes = {
+    onClick: React.PropTypes.func,
+    isLast: React.PropTypes.bool,
+    isEven: React.PropTypes.bool
+  };
+
   style() {
     return {
-      ":nth-child(even)": {
-        background: "#0f0f0f"
-      },
+      background: this.props.isEven ? "#0f0f0f" : "inherit",
+      borderBottom: this.props.isLast ? "0" : "1px solid #222",
       ":hover": {
         background: "#1a1a1a"
-      },
-      borderBottom: "1px solid #222",
-      ":last-child": {
-        borderBottom: "0"
       }
     };
   }
 
   render() {
-    const props = {
-      ...this.props,
-      className: `${this.props.className} ${this.renderStyle()}`
-    };
     return (
-      <tr {...props}>
+      <tr onClick={this.props.onClick} style={this.style()}>
         {this.props.children}
       </tr>
     );
   }
 }
+
+export default Radium(Row);

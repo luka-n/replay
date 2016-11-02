@@ -1,7 +1,7 @@
 import React from "react";
-import Base from "../base";
+import Radium from "radium";
 
-export default class Head extends Base {
+class Head extends React.Component {
   style() {
     return {
       background: "#111",
@@ -13,9 +13,11 @@ export default class Head extends Base {
 
   render() {
     return (
-      <thead className={this.renderStyle()}>
+      <thead style={this.style()}>
         {this.props.children}
       </thead>
     );
   }
 }
+
+export default Radium(Head);

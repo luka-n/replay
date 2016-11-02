@@ -4,7 +4,7 @@ import Column from "./column";
 export default class HeadColumn extends Column {
   render() {
     return (
-      <th className={this.renderStyle()}>
+      <th style={this.style()}>
         {this.props.children}
       </th>
     );

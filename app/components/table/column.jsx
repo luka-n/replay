@@ -1,7 +1,7 @@
 import React from "react";
-import Base from "../base";
+import Radium from "radium";
 
-export default class Column extends Base {
+class Column extends React.Component {
   style() {
     return {
       padding: "0.8rem"
@@ -10,9 +10,11 @@ export default class Column extends Base {
 
   render() {
     return (
-      <td className={this.renderStyle()}>
+      <td style={this.style()}>
         {this.props.children}
       </td>
     );
   }
 }
+
+export default Radium(Column);

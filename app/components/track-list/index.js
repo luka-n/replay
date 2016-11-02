@@ -9,6 +9,7 @@ import Body from "../table/body";
 import Row from "../table/row";
 import Column from "../table/column";
 import HeadColumn from "../table/head-column";
+import HeadRow from "../table/head-row";
 
 export default class TrackList extends React.Component {
   static propTypes = {
@@ -37,7 +38,8 @@ export default class TrackList extends React.Component {
       tracks.push(
         <Track key={index}
                track={track}
-               isOdd={index % 2 === 0}
+               isEven={index % 2 !== 0}
+               isLast={index === this.props.tracks.length - 1}
                isSelected={index === this.props.currentTrackIndex}
                onSelect={this.handleTrackSelect.bind(this, index)}
                onSelectAlbum={this.handleAlbumSelect.bind(this, index)}
@@ -47,12 +49,12 @@ export default class TrackList extends React.Component {
     return (
       <Table>
         <Head>
-          <Row>
+          <HeadRow>
             <HeadColumn>#</HeadColumn>
             <HeadColumn>Artist</HeadColumn>
             <HeadColumn>Title</HeadColumn>
             <HeadColumn>Album</HeadColumn>
-          </Row>
+          </HeadRow>
         </Head>
         <Body>
           {tracks}
