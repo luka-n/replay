@@ -18,7 +18,8 @@ class ProgressBar extends React.Component {
   style() {
     return {
       height: "0.4rem",
-      background: "#333"
+      background: "#333",
+      cursor: "pointer"
     };
   }
 
