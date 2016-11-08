@@ -76,6 +76,13 @@ export function endedState() {
   return {type: actionTypes.ENDED_STATE};
 };
 
+export function ended() {
+  return (dispatch) => {
+    dispatch(endedState());
+    dispatch(next());
+  };
+};
+
 export function pausedState() {
   return {type: actionTypes.PAUSED_STATE};
 };

@@ -14,7 +14,7 @@ function mapDispatchToProps(dispatch) {
   return {
     onCommand: () => dispatch(actions.clearCommand()),
     onDurationchange: (duration) => dispatch(actions.durationChange(duration)),
-    onEnded: () => dispatch(actions.endedState()),
+    onEnded: () => dispatch(actions.ended()),
     onPause: () => dispatch(actions.pausedState()),
     onPlaying: () => dispatch(actions.playingState()),
     onTimeupdate: (time) => dispatch(actions.timeUpdate(time))
