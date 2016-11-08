@@ -19,16 +19,18 @@ export default class TrackList extends React.Component {
   };
 
   handleSelectAlbum(index) {
+    const album = this.props.tracks[index].tags.album;
     this.props.tracks.forEach((track, index) => {
-      if (track.tags.album === this.props.tracks[index].tags.album) {
+      if (track.tags.album === album) {
         this.props.onSelect(index);
       }
     });
   }
 
   handleSelectArtist(index) {
+    const artist = this.props.tracks[index].tags.artist;
     this.props.tracks.forEach((track, index) => {
-      if (track.tags.artist === this.props.tracks[index].tags.artist) {
+      if (track.tags.artist === artist) {
         this.props.onSelect(index);
       }
     });
