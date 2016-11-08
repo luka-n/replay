@@ -16,4 +16,5 @@ export const PLAYING_STATE = "PLAYING_STATE";
 export const RECEIVE_TRACKS = "RECEIVE_TRACKS";
 
 export const TOGGLE_RANDOM = "TOGGLE_RANDOM";
-export const TOGGLE_REPEAT = "TOGGLE_REPEAT";
+
+export const SET_REPEAT = "SET_REPEAT";

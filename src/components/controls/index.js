@@ -4,6 +4,7 @@ import {
   MdPause,
   MdPlayArrow,
   MdRepeat,
+  MdRepeatOne,
   MdShuffle,
   MdSkipNext,
   MdSkipPrevious
@@ -12,13 +13,19 @@ import {
 import withStyle from "../with-style";
 import ProgressBar from "../progress-bar";
 
+import {
+  REPEAT_NONE,
+  REPEAT_ALL,
+  REPEAT_SINGLE
+} from "../../constants/repeat-types";
+
 import Button from "./button";
 
 class Controls extends React.Component {
   static propTypes = {
     duration: React.PropTypes.number,
     random: React.PropTypes.bool,
-    repeat: React.PropTypes.bool,
+    repeat: React.PropTypes.string,
     state: React.PropTypes.string,
     time: React.PropTypes.number,
     onPlay: React.PropTypes.func.isRequired,
@@ -33,6 +40,14 @@ class Controls extends React.Component {
   style = {
     textAlign: "center"
   };
+
+  handleRepeatClick() {
+    switch (this.props.repeat) {
+      case REPEAT_NONE: return this.props.onRepeat(REPEAT_ALL);
+      case REPEAT_ALL: return this.props.onRepeat(REPEAT_SINGLE);
+      case REPEAT_SINGLE: return this.props.onRepeat(REPEAT_NONE);
+    }
+  }
 
   render() {
     return (
@@ -55,8 +70,13 @@ class Controls extends React.Component {
         <Button onClick={this.props.onNext}>
           <MdSkipNext size={32} />
         </Button>
-        <Button inactive={!this.props.repeat} onClick={this.props.onRepeat}>
-          <MdRepeat size={32} />
+        <Button inactive={this.props.repeat === REPEAT_NONE}
+                onClick={this.handleRepeatClick.bind(this)}>
+          {
+            this.props.repeat === REPEAT_SINGLE ?
+              <MdRepeatOne size={32} /> :
+              <MdRepeat size={32} />
+          }
         </Button>
       </div>
     );

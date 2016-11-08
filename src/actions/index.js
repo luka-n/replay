@@ -1,4 +1,5 @@
 import * as actionTypes from "../constants/action-types";
+import * as repeatTypes from "../constants/repeat-types";
 
 export function updateQueueIndex(queueIndex) {
   return {type: actionTypes.UPDATE_QUEUE_INDEX, queueIndex};
@@ -27,7 +28,7 @@ export function next() {
       dispatch(play(Math.floor(Math.random() * state.queue.length)));
     } else if (state.queueIndex + 1 < state.queue.length) {
       dispatch(play(state.queueIndex + 1));
-    } else if (state.repeat) {
+    } else if (state.repeat === repeatTypes.REPEAT_ALL) {
       dispatch(play(0));
     }
   };
@@ -83,9 +84,14 @@ export function endedState() {
 };
 
 export function ended() {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const state = getState().default;
     dispatch(endedState());
-    dispatch(next());
+    if (state.repeat === repeatTypes.REPEAT_SINGLE) {
+      dispatch(play(state.queueIndex));
+    } else {
+      dispatch(next());
+    }
   };
 };
 
@@ -101,6 +107,6 @@ export function toggleRandom() {
   return {type: actionTypes.TOGGLE_RANDOM};
 };
 
-export function toggleRepeat() {
-  return {type: actionTypes.TOGGLE_REPEAT};
+export function setRepeat(repeat) {
+  return {type: actionTypes.SET_REPEAT, repeat};
 };

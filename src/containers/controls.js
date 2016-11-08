@@ -19,7 +19,7 @@ function mapDispatchToProps(dispatch) {
     onPlay: () => dispatch(actions.play()),
     onPrevious: () => dispatch(actions.previous()),
     onRandom: () => dispatch(actions.toggleRandom()),
-    onRepeat: () => dispatch(actions.toggleRepeat()),
+    onRepeat: (repeat) => dispatch(actions.setRepeat(repeat)),
     onSeek: (time) => dispatch(actions.seek(time))
   };
 }

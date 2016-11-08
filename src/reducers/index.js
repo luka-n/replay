@@ -1,4 +1,5 @@
 import * as actionTypes from "../constants/action-types";
+import * as repeatTypes from "../constants/repeat-types";
 
 const initialState = {
   command: null,
@@ -6,7 +7,7 @@ const initialState = {
   queue: [],
   queueIndex: null,
   random: false,
-  repeat: false,
+  repeat: repeatTypes.REPEAT_NONE,
   state: null,
   time: null,
   tracks: []
@@ -40,8 +41,8 @@ export default (state=initialState, action) => {
       return {...state, tracks: action.tracks};
     case actionTypes.TOGGLE_RANDOM:
       return {...state, random: !state.random};
-    case actionTypes.TOGGLE_REPEAT:
-      return {...state, repeat: !state.repeat};
+    case actionTypes.SET_REPEAT:
+      return {...state, repeat: action.repeat};
     default:
       return state;
   }
