@@ -1,6 +1,4 @@
-const config = {
+export default {
   musicDir: "/home/me/Music",
   fileServer: "http://localhost:9090"
 };
-
-export default config;

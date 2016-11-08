@@ -1,0 +1,16 @@
+export const CLEAR_COMMAND = "CLEAR_COMMAND";
+export const PAUSE_COMMAND = "PAUSE_COMMAND";
+export const PLAY_COMMAND = "PLAY_COMMAND";
+export const SEEK_COMMAND = "SEEK_COMMAND";
+
+export const DURATION_CHANGE = "DURATION_CHANGE";
+export const TIME_UPDATE = "TIME_UPDATE";
+
+export const ENQUEUE = "ENQUEUE";
+export const UPDATE_QUEUE_INDEX = "UPDATE_QUEUE_INDEX";
+
+export const ENDED_STATE = "ENDED_STATE";
+export const PAUSED_STATE = "PAUSED_STATE";
+export const PLAYING_STATE = "PLAYING_STATE";
+
+export const RECEIVE_TRACKS = "RECEIVE_TRACKS";

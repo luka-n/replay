@@ -4,21 +4,12 @@ module.exports = {
   entry: [
     "babel-polyfill",
     "webpack/hot/only-dev-server",
-    "./app/index.jsx"
+    "./src/index.js"
   ],
-  output: {
-    path: __dirname + "/dist",
-    filename: "bundle.js"
-  },
-  resolve: {
-    // Setting this overrides the default, so ...
-    // Default is: ["", ".webpack.js", ".web.js", ".js"]
-    extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx"]
-  },
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         loader: "react-hot-loader!babel-loader"
       },
@@ -37,7 +28,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: __dirname + "/app",
+    contentBase: __dirname + "/public",
     port: 7070,
     inline: true,
     historyApiFallback: true,
