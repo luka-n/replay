@@ -1,9 +1,17 @@
 import React from "react";
+
+import {
+  MdPause,
+  MdPlayArrow,
+  MdRepeat,
+  MdShuffle,
+  MdSkipNext,
+  MdSkipPrevious
+} from "react-icons/lib/md";
+
 import withStyle from "../with-style";
-
-import { Icon } from "react-fa";
-
 import ProgressBar from "../progress-bar";
+
 import Button from "./button";
 
 class Controls extends React.Component {
@@ -32,19 +40,23 @@ class Controls extends React.Component {
         <ProgressBar value={this.props.time / this.props.duration * 100}
                      onChange={(value) => this.props.onSeek(this.props.duration / 100 * value)} />
         <Button inactive={!this.props.random} onClick={this.props.onRandom}>
-          <Icon name="random" />
+          <MdShuffle size={32} />
         </Button>
         <Button onClick={this.props.onPrevious}>
-          <Icon name="step-backward" />
+          <MdSkipPrevious size={32} />
         </Button>
         <Button onClick={this.props.state === "PLAYING" ? this.props.onPause : this.props.onPlay}>
-          <Icon name={this.props.state === "PLAYING" ? "pause" : "play"} />
+          {
+            this.props.state === "PLAYING" ?
+              <MdPause size={32} /> :
+              <MdPlayArrow size={32} />
+          }
         </Button>
         <Button onClick={this.props.onNext}>
-          <Icon name="step-forward" />
+          <MdSkipNext size={32} />
         </Button>
         <Button inactive={!this.props.repeat} onClick={this.props.onRepeat}>
-          <Icon name="repeat" />
+          <MdRepeat size={32} />
         </Button>
       </div>
     );
