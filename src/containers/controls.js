@@ -5,6 +5,8 @@ import * as actions from "../actions";
 function mapStateToProps(state) {
   return {
     duration: state.default.duration,
+    random: state.default.random,
+    repeat: state.default.repeat,
     state: state.default.state,
     time: state.default.time
   };
@@ -16,6 +18,8 @@ function mapDispatchToProps(dispatch) {
     onPause: () => dispatch(actions.pause()),
     onPlay: () => dispatch(actions.play()),
     onPrevious: () => dispatch(actions.previous()),
+    onRandom: () => dispatch(actions.toggleRandom()),
+    onRepeat: () => dispatch(actions.toggleRepeat()),
     onSeek: (time) => dispatch(actions.seek(time))
   };
 }

@@ -23,8 +23,12 @@ export function enqueue(track) {
 export function next() {
   return (dispatch, getState) => {
     const state = getState().default;
-    if (state.queueIndex + 1 < state.queue.length) {
+    if (state.random) {
+      dispatch(play(Math.floor(Math.random() * state.queue.length)));
+    } else if (state.queueIndex + 1 < state.queue.length) {
       dispatch(play(state.queueIndex + 1));
+    } else if (state.repeat) {
+      dispatch(play(0));
     }
   };
 };
@@ -50,7 +54,9 @@ export function play(index) {
 export function previous() {
   return (dispatch, getState) => {
     const state = getState().default;
-    if (state.queueIndex > 0) {
+    if (state.random) {
+      dispatch(play(Math.floor(Math.random() * state.queue.length)));
+    } else if (state.queueIndex > 0) {
       dispatch(play(state.queueIndex - 1));
     }
   };
@@ -89,4 +95,12 @@ export function pausedState() {
 
 export function playingState() {
   return {type: actionTypes.PLAYING_STATE};
+};
+
+export function toggleRandom() {
+  return {type: actionTypes.TOGGLE_RANDOM};
+};
+
+export function toggleRepeat() {
+  return {type: actionTypes.TOGGLE_REPEAT};
 };

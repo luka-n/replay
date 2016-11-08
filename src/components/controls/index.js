@@ -9,13 +9,17 @@ import Button from "./button";
 class Controls extends React.Component {
   static propTypes = {
     duration: React.PropTypes.number,
+    random: React.PropTypes.bool,
+    repeat: React.PropTypes.bool,
     state: React.PropTypes.string,
     time: React.PropTypes.number,
     onPlay: React.PropTypes.func.isRequired,
     onPause: React.PropTypes.func.isRequired,
     onSeek: React.PropTypes.func.isRequired,
     onNext: React.PropTypes.func.isRequired,
-    onPrevious: React.PropTypes.func.isRequired
+    onPrevious: React.PropTypes.func.isRequired,
+    onRandom: React.PropTypes.func.isRequired,
+    onRepeat: React.PropTypes.func.isRequired
   };
 
   style = {
@@ -27,6 +31,9 @@ class Controls extends React.Component {
       <div>
         <ProgressBar value={this.props.time / this.props.duration * 100}
                      onChange={(value) => this.props.onSeek(this.props.duration / 100 * value)} />
+        <Button inactive={!this.props.random} onClick={this.props.onRandom}>
+          <Icon name="random" />
+        </Button>
         <Button onClick={this.props.onPrevious}>
           <Icon name="step-backward" />
         </Button>
@@ -35,6 +42,9 @@ class Controls extends React.Component {
         </Button>
         <Button onClick={this.props.onNext}>
           <Icon name="step-forward" />
+        </Button>
+        <Button inactive={!this.props.repeat} onClick={this.props.onRepeat}>
+          <Icon name="repeat" />
         </Button>
       </div>
     );

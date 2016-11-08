@@ -5,6 +5,8 @@ const initialState = {
   duration: null,
   queue: [],
   queueIndex: null,
+  random: false,
+  repeat: false,
   state: null,
   time: null,
   tracks: []
@@ -36,6 +38,10 @@ export default (state=initialState, action) => {
       return {...state, state: "PLAYING"};
     case actionTypes.RECEIVE_TRACKS:
       return {...state, tracks: action.tracks};
+    case actionTypes.TOGGLE_RANDOM:
+      return {...state, random: !state.random};
+    case actionTypes.TOGGLE_REPEAT:
+      return {...state, repeat: !state.repeat};
     default:
       return state;
   }
