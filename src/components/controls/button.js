@@ -21,7 +21,7 @@ class Button extends React.Component {
         background: "#1a1a1a"
       }
     };
-  };
+  }
 
   render() {
     return (

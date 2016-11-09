@@ -16,7 +16,7 @@ class Footer extends React.Component {
       <div {...this.props}>
         {this.props.children}
       </div>
-    )
+    );
   }
 }
 

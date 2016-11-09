@@ -68,6 +68,6 @@ export default class Audio extends React.Component {
 
   render() {
     return <audio src={this.props.src}
-                  ref={(audio) => this.audio = audio} />
+                  ref={(audio) => this.audio = audio} />;
   }
 }

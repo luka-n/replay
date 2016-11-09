@@ -13,7 +13,7 @@ class Row extends React.Component {
     if (this.props.isActive) {
       background = "#2f2f2f";
     } else if (this.props.isEven) {
-      background = "#0f0f0f"
+      background = "#0f0f0f";
     }
     return {
       background: background,

@@ -26,7 +26,7 @@ class ProgressBar extends React.Component {
       <div onClick={this.handleClick.bind(this)}>
         <Progress value={this.props.value} />
       </div>
-    )
+    );
   }
 }
 

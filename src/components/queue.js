@@ -13,6 +13,6 @@ export default class Queue extends React.Component {
       <TrackList tracks={this.props.tracks}
                  currentIndex={this.props.currentIndex}
                  onSelect={this.props.onSelect} />
-    )
+    );
   }
 }
