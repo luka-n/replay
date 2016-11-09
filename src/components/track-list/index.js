@@ -1,13 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import Track from "./track";
 
 import Table from "../theme/table";
 import Head from "../theme/table/head";
 import Body from "../theme/table/body";
-import Row from "../theme/table/row";
-import Column from "../theme/table/column";
 import HeadColumn from "../theme/table/head-column";
 import HeadRow from "../theme/table/head-row";
 
