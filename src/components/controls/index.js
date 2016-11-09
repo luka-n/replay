@@ -49,18 +49,23 @@ class Controls extends React.Component {
     }
   }
 
+  handleProgressChange(value) {
+    return this.props.onSeek(this.props.duration / 100 * value);
+  }
+
   render() {
     return (
       <div>
         <ProgressBar value={this.props.time / this.props.duration * 100}
-                     onChange={(value) => this.props.onSeek(this.props.duration / 100 * value)} />
+                     onChange={this.handleProgressChange.bind(this)} />
         <Button inactive={!this.props.random} onClick={this.props.onRandom}>
           <MdShuffle size={32} />
         </Button>
         <Button onClick={this.props.onPrevious}>
           <MdSkipPrevious size={32} />
         </Button>
-        <Button onClick={this.props.state === "PLAYING" ? this.props.onPause : this.props.onPlay}>
+        <Button onClick={this.props.state === "PLAYING" ?
+                           this.props.onPause : this.props.onPlay}>
           {
             this.props.state === "PLAYING" ?
               <MdPause size={32} /> :

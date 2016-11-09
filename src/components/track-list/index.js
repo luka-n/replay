@@ -42,9 +42,12 @@ export default class TrackList extends React.Component {
                isEven={index % 2 !== 0}
                isLast={index === this.props.tracks.length - 1}
                isSelected={index === this.props.currentIndex}
-               onSelect={this.props.onSelect && this.props.onSelect.bind(null, index)}
-               onSelectAlbum={this.props.onSelect && this.handleSelectAlbum.bind(this, index)}
-               onSelectArtist={this.props.onSelect && this.handleSelectArtist.bind(this, index)} />
+               onSelect={this.props.onSelect &&
+                           this.props.onSelect.bind(null, index)}
+               onSelectAlbum={this.props.onSelect &&
+                                this.handleSelectAlbum.bind(this, index)}
+               onSelectArtist={this.props.onSelect &&
+                                 this.handleSelectArtist.bind(this, index)} />
       );
     });
     return (

@@ -8,6 +8,7 @@
   "rules": {
     "indent": ["error", 2, {"SwitchCase": 1}],
     "linebreak-style": ["error", "unix"],
+    "max-len": ["error", 80],
     "object-curly-spacing": ["error", "always"],
     "quotes": ["error", "double"],
     "react/prop-types": ["error", {"ignore": ["children"]}],
