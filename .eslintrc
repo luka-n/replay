@@ -6,6 +6,8 @@
     "browser": true
   },
   "rules": {
+    "arrow-parens": ["error", "always"],
+    "eqeqeq": ["error", "always"],
     "indent": ["error", 2, {"SwitchCase": 1}],
     "linebreak-style": ["error", "unix"],
     "max-len": ["error", 80],
