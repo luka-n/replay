@@ -25,7 +25,7 @@ class Row extends React.Component {
   }
 
   render() {
-    const props = {...this.props};
+    const props = { ...this.props };
     delete props.isLast;
     delete props.isEven;
     delete props.isActive;

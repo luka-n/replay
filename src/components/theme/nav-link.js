@@ -23,7 +23,7 @@ class NavLink extends React.Component {
   }
 
   render() {
-    const props = {...this.props};
+    const props = { ...this.props };
     delete props.last;
     return (
       <LinkWithStyle {...props}>

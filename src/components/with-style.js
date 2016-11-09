@@ -13,7 +13,7 @@ function withStyle(Component) {
         typeof(this.style) === "object" && this.style,
         this.props.style
       ];
-      return React.cloneElement(super.render(), {style});
+      return React.cloneElement(super.render(), { style });
     }
   }
   return Radium(ComponentWithStyle);

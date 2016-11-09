@@ -2,11 +2,11 @@ import * as actionTypes from "../constants/action-types";
 import * as repeatTypes from "../constants/repeat-types";
 
 export function updateQueueIndex(queueIndex) {
-  return {type: actionTypes.UPDATE_QUEUE_INDEX, queueIndex};
+  return { type: actionTypes.UPDATE_QUEUE_INDEX, queueIndex };
 }
 
 export function receiveTracks(tracks) {
-  return {type: actionTypes.RECEIVE_TRACKS, tracks};
+  return { type: actionTypes.RECEIVE_TRACKS, tracks };
 }
 
 export function loadTracks() {
@@ -18,7 +18,7 @@ export function loadTracks() {
 }
 
 export function enqueue(track) {
-  return {type: actionTypes.ENQUEUE, track};
+  return { type: actionTypes.ENQUEUE, track };
 }
 
 export function next() {
@@ -35,11 +35,11 @@ export function next() {
 }
 
 export function pause() {
-  return {type: actionTypes.PAUSE_COMMAND};
+  return { type: actionTypes.PAUSE_COMMAND };
 }
 
 export function playCommand() {
-  return {type: actionTypes.PLAY_COMMAND};
+  return { type: actionTypes.PLAY_COMMAND };
 }
 
 export function play(index) {
@@ -64,23 +64,23 @@ export function previous() {
 }
 
 export function seek(time) {
-  return {type: actionTypes.SEEK_COMMAND, time};
+  return { type: actionTypes.SEEK_COMMAND, time };
 }
 
 export function clearCommand() {
-  return {type: actionTypes.CLEAR_COMMAND};
+  return { type: actionTypes.CLEAR_COMMAND };
 }
 
 export function durationChange(duration) {
-  return {type: actionTypes.DURATION_CHANGE, duration};
+  return { type: actionTypes.DURATION_CHANGE, duration };
 }
 
 export function timeUpdate(time) {
-  return {type: actionTypes.TIME_UPDATE, time};
+  return { type: actionTypes.TIME_UPDATE, time };
 }
 
 export function endedState() {
-  return {type: actionTypes.ENDED_STATE};
+  return { type: actionTypes.ENDED_STATE };
 }
 
 export function ended() {
@@ -96,17 +96,17 @@ export function ended() {
 }
 
 export function pausedState() {
-  return {type: actionTypes.PAUSED_STATE};
+  return { type: actionTypes.PAUSED_STATE };
 }
 
 export function playingState() {
-  return {type: actionTypes.PLAYING_STATE};
+  return { type: actionTypes.PLAYING_STATE };
 }
 
 export function toggleRandom() {
-  return {type: actionTypes.TOGGLE_RANDOM};
+  return { type: actionTypes.TOGGLE_RANDOM };
 }
 
 export function setRepeat(repeat) {
-  return {type: actionTypes.SET_REPEAT, repeat};
+  return { type: actionTypes.SET_REPEAT, repeat };
 }
