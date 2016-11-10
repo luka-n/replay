@@ -15,9 +15,11 @@ class Track extends React.Component {
     onSelectArtist: React.PropTypes.func
   };
 
-  style = {
-    cursor: "pointer"
-  };
+  style() {
+    return {
+      cursor: this.props.onSelect ? "pointer" : "auto"
+    };
+  }
 
   handleAlbumClick(event) {
     event.stopPropagation();
