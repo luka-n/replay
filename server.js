@@ -2,10 +2,10 @@ import datastore from "nedb-promise";
 import express from "express";
 import serveStatic from "serve-static";
 
+import config from "./config";
+
 const app = express();
 const db = datastore({filename: "db/tracks.db", autoload: true});
-
-import config from "./config";
 
 app.use(serveStatic(config.musicDir));
 
