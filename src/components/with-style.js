@@ -3,6 +3,8 @@ import Radium from "radium";
 
 function withStyle(Component) {
   class ComponentWithStyle extends Component {
+    static displayName = `withStyle(${Component.name})`;
+
     static propTypes = {
       style: React.PropTypes.object
     };
