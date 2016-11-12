@@ -8,7 +8,7 @@ class Container extends React.Component {
     color: "#ddd",
     fontFamily: "sans-serif",
     height: "100vh",
-    padding: "5.2rem 2rem 5.2rem 14rem"
+    padding: "5.2rem 2rem"
   };
 
   render() {

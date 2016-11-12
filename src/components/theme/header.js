@@ -11,10 +11,10 @@ class Header extends React.Component {
     top: "0",
     left: "0",
     right: "0",
-    paddingLeft: "14rem",
-    fontSize: "1.6rem",
+    padding: "0 2rem",
     display: "flex",
-    alignItems: "center"
+    alignItems: "stretch",
+    justifyContent: "space-between"
   };
 
   render() {

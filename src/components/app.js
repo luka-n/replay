@@ -5,7 +5,7 @@ import Controls from "../containers/controls";
 
 import Container from "./theme/container";
 import Header from "./theme/header";
-import Sidebar from "./theme/sidebar";
+import HeaderBrand from "./theme/header-brand";
 import Nav from "./theme/nav";
 import NavLink from "./theme/nav-link";
 import Footer from "./theme/footer";
@@ -14,13 +14,13 @@ export default class App extends React.Component {
   render() {
     return (
       <Container>
-        <Header>replay</Header>
-        <Sidebar>
+        <Header>
+          <HeaderBrand>replay</HeaderBrand>
           <Nav>
             <NavLink to="/">Queue</NavLink>
             <NavLink last to="/library">Library</NavLink>
           </Nav>
-        </Sidebar>
+        </Header>
         {this.props.children}
         <Footer>
           <Audio />

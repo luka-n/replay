@@ -1,19 +1,20 @@
 import React from "react";
 import withStyle from "../with-style";
 
-class Nav extends React.Component {
+class HeaderBrand extends React.Component {
   style = {
+    fontSize: "1.6rem",
     display: "flex",
-    alignItems: "stretch"
+    alignItems: "center"
   };
 
   render() {
     return (
-      <div {...this.props}>
+      <span {...this.props}>
         {this.props.children}
-      </div>
+      </span>
     );
   }
 }
 
-export default withStyle(Nav);
+export default withStyle(HeaderBrand);

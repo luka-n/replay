@@ -11,13 +11,15 @@ class NavLink extends React.Component {
 
   style() {
     return {
-      display: "block",
-      padding: "0.8rem 1.6rem",
-      borderBottom: !this.props.last ? "thin solid #666" : "0",
       color: "#999",
+      cursor: "pointer",
+      fontSize: "1.2rem",
+      padding: "0rem 1rem",
       textDecoration: "none",
+      display: "flex",
+      alignItems: "center",
       ":hover": {
-        background: "#444"
+        background: "#1a1a1a"
       }
     };
   }
