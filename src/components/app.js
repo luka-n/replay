@@ -18,7 +18,7 @@ export default class App extends React.Component {
           <HeaderBrand>replay</HeaderBrand>
           <Nav>
             <NavLink to="/">Queue</NavLink>
-            <NavLink last to="/library">Library</NavLink>
+            <NavLink to="/library">Library</NavLink>
           </Nav>
         </Header>
         {this.props.children}

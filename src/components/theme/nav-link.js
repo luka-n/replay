@@ -5,10 +5,6 @@ import withStyle from "../with-style";
 const LinkWithStyle = withStyle(Link);
 
 class NavLink extends React.Component {
-  static propTypes = {
-    last: React.PropTypes.bool
-  };
-
   style() {
     return {
       color: "#999",
@@ -25,10 +21,8 @@ class NavLink extends React.Component {
   }
 
   render() {
-    const props = { ...this.props };
-    delete props.last;
     return (
-      <LinkWithStyle {...props}>
+      <LinkWithStyle {...this.props}>
         {this.props.children}
       </LinkWithStyle>
     );
