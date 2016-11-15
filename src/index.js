@@ -10,6 +10,7 @@ import { syncHistoryWithStore, routerReducer } from "react-router-redux";
 import App from "./components/app";
 import Library from "./containers/library";
 import Queue from "./containers/queue";
+import Import from "./containers/import";
 
 import * as reducers from "./reducers";
 
@@ -29,6 +30,7 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <IndexRoute component={Queue} />
         <Route path="library" component={Library} />
+        <Route path="import" component={Import} />
       </Route>
     </Router>
   </Provider>,

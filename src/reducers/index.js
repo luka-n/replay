@@ -10,7 +10,8 @@ const initialState = {
   repeat: repeatTypes.REPEAT_NONE,
   state: null,
   time: null,
-  tracks: []
+  tracks: [],
+  imports: []
 };
 
 export default (state=initialState, action) => {
@@ -39,6 +40,8 @@ export default (state=initialState, action) => {
       return { ...state, state: "PLAYING" };
     case actionTypes.RECEIVE_TRACKS:
       return { ...state, tracks: action.tracks };
+    case actionTypes.RECEIVE_IMPORTS:
+      return { ...state, imports: action.imports };
     case actionTypes.TOGGLE_RANDOM:
       return { ...state, random: !state.random };
     case actionTypes.SET_REPEAT:

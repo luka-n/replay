@@ -110,3 +110,26 @@ export function toggleRandom() {
 export function setRepeat(repeat) {
   return { type: actionTypes.SET_REPEAT, repeat };
 }
+
+export function receiveImports(imports) {
+  return { type: actionTypes.RECEIVE_IMPORTS, imports };
+}
+
+export function loadImports() {
+  return async (dispatch) => {
+    const response = await fetch("/api/imports");
+    const json = await response.json();
+    dispatch(receiveImports(json));
+  };
+}
+
+export function importTrack(track) {
+  return async (dispatch) => {
+    await fetch("/api/tracks", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ file: track.path })
+    });
+    dispatch(loadImports());
+  };
+}

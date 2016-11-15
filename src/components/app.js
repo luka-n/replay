@@ -19,6 +19,7 @@ export default class App extends React.Component {
           <Nav>
             <NavLink to="/">Queue</NavLink>
             <NavLink to="/library">Library</NavLink>
+            <NavLink to="/import">Import</NavLink>
           </Nav>
         </Header>
         {this.props.children}
