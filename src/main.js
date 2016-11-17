@@ -34,5 +34,5 @@ ReactDOM.render(
       </Route>
     </Router>
   </Provider>,
-  document.getElementById("index")
+  document.getElementById("main")
 );

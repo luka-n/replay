@@ -4,7 +4,7 @@ module.exports = {
   entry: [
     "babel-polyfill",
     "webpack/hot/only-dev-server",
-    "./src/index.js"
+    "./src/main.js"
   ],
   module: {
     preLoaders: [

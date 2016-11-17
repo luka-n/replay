@@ -5,10 +5,10 @@ import fs from "fs";
 import id3 from "music-tag";
 import serveStatic from "serve-static";
 
-import config from "./config";
+import config from "../../config.js";
 
 const app = express();
-const db = datastore({filename: "db/tracks.db", autoload: true});
+const db = datastore({filename: "../../db/tracks.db", autoload: true});
 
 // file path to be given relative to music dir
 async function trackFromFile(file) {
