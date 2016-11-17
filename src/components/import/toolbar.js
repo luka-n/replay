@@ -1,9 +1,9 @@
 import React from "react";
-import withStyle from "./with-style";
-import Button from "./theme/button";
-import Toolbar from "./theme/toolbar";
+import withStyle from "../with-style";
+import Button from "../theme/button";
+import ThemeToolbar from "../theme/toolbar";
 
-class ImportToolbar extends React.Component {
+class Toolbar extends React.Component {
   static propTypes = {
     count: React.PropTypes.number.isRequired,
     onImport: React.PropTypes.func.isRequired
@@ -18,12 +18,12 @@ class ImportToolbar extends React.Component {
 
   render() {
     return (
-      <Toolbar>
+      <ThemeToolbar>
         <span>{this.props.count} new tracks to import ...</span>
         <Button onClick={this.props.onImport}>Import all</Button>
-      </Toolbar>
+      </ThemeToolbar>
     );
   }
 }
 
-export default withStyle(ImportToolbar);
+export default withStyle(Toolbar);

@@ -1,6 +1,6 @@
 import React from "react";
-import ImportToolbar from "./import-toolbar";
-import TrackList from "./track-list";
+import Toolbar from "./toolbar";
+import TrackList from "../track-list";
 
 export default class Import extends React.Component {
   static propTypes = {
@@ -22,8 +22,8 @@ export default class Import extends React.Component {
   render() {
     return (
       <div>
-        <ImportToolbar count={this.props.tracks.length}
-                       onImport={this.handleImport.bind(this)} />
+        <Toolbar count={this.props.tracks.length}
+                 onImport={this.handleImport.bind(this)} />
         <TrackList tracks={this.props.tracks} />
       </div>
     );
