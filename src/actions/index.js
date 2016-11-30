@@ -1,4 +1,5 @@
 import * as actionTypes from "../constants/action-types";
+import * as endpoints from "../constants/endpoints";
 import * as repeatTypes from "../constants/repeat-types";
 
 export function updateQueueIndex(queueIndex) {
@@ -11,7 +12,7 @@ export function receiveTracks(tracks) {
 
 export function loadTracks() {
   return async (dispatch) => {
-    const response = await fetch("/api/tracks");
+    const response = await fetch(endpoints.TRACKS_ENDPOINT);
     const json = await response.json();
     dispatch(receiveTracks(json));
   };
@@ -117,7 +118,7 @@ export function receiveImports(imports) {
 
 export function loadImports() {
   return async (dispatch) => {
-    const response = await fetch("/api/imports");
+    const response = await fetch(endpoints.IMPORTS_ENDPOINT);
     const json = await response.json();
     dispatch(receiveImports(json));
   };
@@ -125,7 +126,7 @@ export function loadImports() {
 
 export function importTrack(track) {
   return async (dispatch) => {
-    await fetch("/api/tracks", {
+    await fetch(endpoints.TRACKS_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ file: track.path })

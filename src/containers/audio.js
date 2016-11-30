@@ -1,12 +1,13 @@
 import { connect } from "react-redux";
 import Audio from "../components/audio";
 import * as actions from "../actions";
+import * as endpoints from "../constants/endpoints";
 
 function mapStateToProps(state) {
   const queueTrack = state.default.queue[state.default.queueIndex];
   return {
     command: state.default.command,
-    src: queueTrack && queueTrack.src
+    src: queueTrack && `${endpoints.TRACKS_ENDPOINT}/${queueTrack._id}`
   };
 }
 
