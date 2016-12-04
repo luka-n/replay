@@ -5,6 +5,8 @@
   "author": "Luka Novsak <lnovsak@gmail.com>",
   "license": "GPL-3.0",
   "scripts": {
+    "dev-client": "webpack-dev-server",
+    "dev-server": "nodemon -w src/server/ --exec babel-node src/server/main.js",
     "lint-client": "eslint -c .eslintrc-client src/client/",
     "lint-server": "eslint -c .eslintrc-server src/server/"
   },
