@@ -13,5 +13,5 @@ app.use("/imports", imports);
 app.use("/tracks", tracks);
 
 app.listen(9090, () => {
-  console.log("Listening on port 9090 ...");
+  console.log("Listening on port 9090 ..."); // eslint-disable-line no-console
 });

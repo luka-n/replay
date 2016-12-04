@@ -6,6 +6,9 @@ module.exports = {
     "webpack/hot/only-dev-server",
     "./src/client/main.js"
   ],
+  eslint: {
+    configFile: "./.eslintrc-client"
+  },
   module: {
     preLoaders: [
       {

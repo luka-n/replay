@@ -4,6 +4,10 @@
   "description": "Music player",
   "author": "Luka Novsak <lnovsak@gmail.com>",
   "license": "GPL-3.0",
+  "scripts": {
+    "lint-client": "eslint -c .eslintrc-client src/client/",
+    "lint-server": "eslint -c .eslintrc-server src/server/"
+  },
   "dependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
