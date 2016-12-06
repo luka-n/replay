@@ -1,4 +1,4 @@
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import Audio from "../components/audio";
 import * as actions from "../actions";
 import * as endpoints from "../constants/endpoints";

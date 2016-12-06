@@ -11,11 +11,11 @@ function withStyle(Component) {
 
     render() {
       const style = [
-        typeof(this.style) === "function" && this.style(),
-        typeof(this.style) === "object" && this.style,
+        typeof (this.style) === "function" && this.style(),
+        typeof (this.style) === "object" && this.style,
         this.props.style
       ];
-      return React.cloneElement(super.render(), { style });
+      return React.cloneElement(super.render(), {style});
     }
   }
   return Radium(ComponentWithStyle);

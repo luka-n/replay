@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import thunk from "redux-thunk";
 
-import { createStore, applyMiddleware, compose, combineReducers } from "redux";
-import { Provider } from "react-redux";
-import { Router, Route, IndexRoute, browserHistory } from "react-router";
-import { syncHistoryWithStore, routerReducer } from "react-router-redux";
+import {createStore, applyMiddleware, compose, combineReducers} from "redux";
+import {Provider} from "react-redux";
+import {Router, Route, IndexRoute, browserHistory} from "react-router";
+import {syncHistoryWithStore, routerReducer} from "react-router-redux";
 
 import App from "./components/app";
 import Library from "./containers/library";

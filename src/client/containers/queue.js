@@ -1,4 +1,4 @@
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import Queue from "../components/queue";
 import * as actions from "../actions";
 

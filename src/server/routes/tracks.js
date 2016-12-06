@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { trackFromFile } from "../lib/import";
+import {Router} from "express";
+import {trackFromFile} from "../lib/import";
 import config from "../../../config.js";
 import db from "../db";
 
@@ -17,7 +17,7 @@ tracks.post("/", async (req, res) => {
 });
 
 tracks.get("/:id", async (req, res) => {
-  const track = await db.findOne({ _id: req.params.id });
+  const track = await db.findOne({_id: req.params.id});
   res.sendFile(`${config.musicDir}/${track.path}`);
 });
 

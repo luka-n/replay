@@ -7,7 +7,7 @@ import tracks from "./routes/tracks";
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use("/imports", imports);
 app.use("/tracks", tracks);

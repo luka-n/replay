@@ -14,38 +14,38 @@ const initialState = {
   imports: []
 };
 
-export default (state=initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CLEAR_COMMAND:
-      return { ...state, command: null };
+      return {...state, command: null};
     case actionTypes.PAUSE_COMMAND:
-      return { ...state, command: { type: "PAUSE" } };
+      return {...state, command: {type: "PAUSE"}};
     case actionTypes.PLAY_COMMAND:
-      return { ...state, command: { type: "PLAY" } };
+      return {...state, command: {type: "PLAY"}};
     case actionTypes.SEEK_COMMAND:
-      return { ...state, command: { type: "SEEK", time: action.time } };
+      return {...state, command: {type: "SEEK", time: action.time}};
     case actionTypes.DURATION_CHANGE:
-      return { ...state, duration: action.duration };
+      return {...state, duration: action.duration};
     case actionTypes.TIME_UPDATE:
-      return { ...state, time: action.time };
+      return {...state, time: action.time};
     case actionTypes.ENQUEUE:
-      return { ...state, queue: [...state.queue, action.track] };
+      return {...state, queue: [...state.queue, action.track]};
     case actionTypes.UPDATE_QUEUE_INDEX:
-      return { ...state, queueIndex: action.queueIndex };
+      return {...state, queueIndex: action.queueIndex};
     case actionTypes.ENDED_STATE:
-      return { ...state, state: "ENDED" };
+      return {...state, state: "ENDED"};
     case actionTypes.PAUSED_STATE:
-      return { ...state, state: "PAUSED" };
+      return {...state, state: "PAUSED"};
     case actionTypes.PLAYING_STATE:
-      return { ...state, state: "PLAYING" };
+      return {...state, state: "PLAYING"};
     case actionTypes.RECEIVE_TRACKS:
-      return { ...state, tracks: action.tracks };
+      return {...state, tracks: action.tracks};
     case actionTypes.RECEIVE_IMPORTS:
-      return { ...state, imports: action.imports };
+      return {...state, imports: action.imports};
     case actionTypes.TOGGLE_RANDOM:
-      return { ...state, random: !state.random };
+      return {...state, random: !state.random};
     case actionTypes.SET_REPEAT:
-      return { ...state, repeat: action.repeat };
+      return {...state, repeat: action.repeat};
     default:
       return state;
   }

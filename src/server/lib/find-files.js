@@ -1,8 +1,8 @@
 import fs from "fs";
 
 export default function findFiles(dir, test) {
-  return fs.readdirSync(dir)
-    .reduce((files, file) => {
+  return fs.readdirSync(dir).
+    reduce((files, file) => {
       const path = `${dir}/${file}`;
       const stats = fs.statSync(path);
       if (stats.isFile() && test(file)) {
