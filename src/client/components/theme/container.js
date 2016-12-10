@@ -7,7 +7,7 @@ class Container extends React.Component {
     boxSizing: "border-box",
     color: "#ddd",
     fontFamily: "sans-serif",
-    height: "100vh",
+    minHeight: "100vh",
     padding: "5.2rem 2rem"
   };
 
