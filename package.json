@@ -25,6 +25,7 @@
     "eslint-loader": "^1.6.1",
     "eslint-plugin-react": "^6.6.0",
     "express": "^4.14.0",
+    "morgan": "^1.7.0",
     "music-tag": "^0.0.9",
     "nedb-promise": "^2.0.0",
     "nodemon": "^1.11.0",

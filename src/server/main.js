@@ -17,6 +17,7 @@
 
 import express from "express";
 import bodyParser from "body-parser";
+import morgan from "morgan";
 
 import imports from "./routes/imports";
 import tracks from "./routes/tracks";
@@ -25,6 +26,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(morgan("short"));
 
 app.use("/imports", imports);
 app.use("/tracks", tracks);
