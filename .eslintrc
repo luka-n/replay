@@ -1,6 +1,12 @@
 {
   "parser": "babel-eslint",
-  "extends": ["eslint:recommended"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "plugins": ["react"],
   "rules": {
     "array-bracket-spacing": ["error", "never"],
     "arrow-parens": ["error", "always"],
@@ -32,6 +38,7 @@
     "object-curly-spacing": ["error", "never"],
     "operator-linebreak": ["error", "after"],
     "quotes": ["error", "double"],
+    "react/prop-types": ["error", {"ignore": ["children"]}],
     "rest-spread-spacing": ["error"],
     "semi": ["error", "always"],
     "semi-spacing": ["error"],

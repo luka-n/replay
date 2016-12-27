@@ -16,9 +16,9 @@
 // along with replay.  If not, see <http://www.gnu.org/licenses/>.
 
 import {Router} from "express";
-import {trackFromFile} from "../lib/import";
-import config from "../../../config.js";
-import db from "../db";
+import {trackFromFile} from "../../lib/import";
+import config from "../../../../config.js";
+import db from "../../db";
 
 const tracks = Router();
 

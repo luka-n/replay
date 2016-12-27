@@ -17,39 +17,22 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import thunk from "redux-thunk";
 
-import {createStore, applyMiddleware, compose, combineReducers} from "redux";
 import {Provider} from "react-redux";
-import {Router, Route, IndexRoute, browserHistory} from "react-router";
-import {syncHistoryWithStore, routerReducer} from "react-router-redux";
 
-import App from "./components/app";
-import Library from "./containers/library";
-import Queue from "./containers/queue";
-import Import from "./containers/import";
+import {browserHistory, Router} from "react-router";
+import {syncHistoryWithStore} from "react-router-redux";
 
-import * as reducers from "./reducers";
+import configureStore from "../shared/store/configure-store";
+import routes from "../shared/routes";
 
-const reducer = combineReducers({
-  ...reducers,
-  routing: routerReducer
-});
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
-
+const preloadedState = window.__PRELOADED_STATE__;
+const store = configureStore(preloadedState);
 const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
-      <Route path="/" component={App}>
-        <IndexRoute component={Queue} />
-        <Route path="library" component={Library} />
-        <Route path="import" component={Import} />
-      </Route>
-    </Router>
+    <Router history={history} routes={routes} />
   </Provider>,
   document.getElementById("main")
 );

@@ -15,25 +15,37 @@
 // You should have received a copy of the GNU General Public License
 // along with replay.  If not, see <http://www.gnu.org/licenses/>.
 
-import {Router} from "express";
-import findFiles from "../lib/find-files";
-import {trackFromFile} from "../lib/import";
-import config from "../../../config.js";
-import db from "../db";
+import React from "react";
+import {Style} from "radium";
+import withStyle from "../with-style";
 
-const imports = Router();
+class Container extends React.Component {
+  style = {
+    background: "#000",
+    boxSizing: "border-box",
+    color: "#ddd",
+    fontFamily: "sans-serif",
+    minHeight: "100vh",
+    padding: "5.2rem 2rem"
+  };
 
-imports.get("/", async (req, res) => {
-  const musicFiles = findFiles(config.musicDir, (file) => file.match(/\.mp3$/)).
-        map((file) => file.replace(new RegExp(`^${config.musicDir}/*`), ""));
-  const imports = [];
-  await Promise.all(musicFiles.map(async (file) => {
-    const track = await db.findOne({path: file});
-    if (!track) {
-      imports.push(await trackFromFile(file));
-    }
-  }));
-  res.json(imports);
-});
+  render() {
+    const globalStyles = {
+      html: {
+        fontSize: "14px"
+      },
+      body: {
+        margin: 0,
+        padding: 0
+      }
+    };
+    return (
+      <div {...this.props}>
+        <Style rules={globalStyles} />
+        {this.props.children}
+      </div>
+    );
+  }
+}
 
-export default imports;
+export default withStyle(Container);

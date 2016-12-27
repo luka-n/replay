@@ -15,6 +15,9 @@
 // You should have received a copy of the GNU General Public License
 // along with replay.  If not, see <http://www.gnu.org/licenses/>.
 
+import {combineReducers} from "redux";
+import {routerReducer} from "react-router-redux";
+
 import * as actionTypes from "../constants/action-types";
 import * as repeatTypes from "../constants/repeat-types";
 
@@ -31,7 +34,7 @@ const initialState = {
   imports: []
 };
 
-export default (state = initialState, action) => {
+function defaultReducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.CLEAR_COMMAND:
       return {...state, command: null};
@@ -66,4 +69,9 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
-};
+}
+
+export default combineReducers({
+  default: defaultReducer,
+  routing: routerReducer
+});
