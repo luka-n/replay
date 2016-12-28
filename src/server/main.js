@@ -17,8 +17,8 @@
 
 import express from "express";
 import morgan from "morgan";
+import path from "path";
 import api from "./routes/api";
-import client from "./middleware/client";
 // webpack dev only imports
 import webpack from "webpack";
 import webpackConfig from "./webpack.config";
@@ -35,6 +35,18 @@ if (app.get("env") === "development") {
   const webpackCompiler = webpack(webpackConfig);
   app.use(webpackMiddleware(webpackCompiler, {noInfo: true}));
   app.use(webpackHotMiddleware(webpackCompiler));
+  // invalidate server side require cache of shared modules after rebuild
+  webpackCompiler.plugin("done", () => {
+    // eslint-disable-next-line no-console
+    console.log("Invalidating require cache of shared modules on server ...");
+    Object.keys(require.cache).forEach((id) => {
+      const sharedPath = path.resolve(`${__dirname}/../shared`);
+      if (id.match(new RegExp(`^${sharedPath}/`))) {
+        delete require.cache[id];
+      }
+    });
+    delete require.cache[__dirname + "/middleware/client.js"];
+  });
 }
 
 // serve public/ directory (where webpack build should be) in production
@@ -46,7 +58,9 @@ if (app.get("env") === "production") {
 
 app.use("/api", api);
 
-app.use(client);
+app.use((...args) => {
+  require("./middleware/client").default(...args);
+});
 
 app.listen(9090, () => {
   console.log("Listening on port 9090 ..."); // eslint-disable-line no-console
