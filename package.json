@@ -5,11 +5,22 @@
   "author": "Luka Novsak <lnovsak@gmail.com>",
   "license": "GPL-3.0",
   "scripts": {
-    "dev-server": "nodemon -w src/ --exec babel-node src/server/main.js",
-    "server": "babel-node src/server/main.js"
+    "build": "babel -d build/ src/",
+    "clean": "rm -rf build/* public/bundle.js",
+    "dev-server": "babel-node src/server/main.js",
+    "eslint": "eslint src/",
+    "server": "NODE_ENV=production node build/server/main.js",
+    "webpack": "webpack build/client/main.js public/bundle.js"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
     "eslint": "^3.12.2",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-react": "^6.8.0",
@@ -20,14 +31,7 @@
     "webpack-hot-middleware": "^2.14.0"
   },
   "dependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-core": "^6.21.0",
-    "babel-loader": "^6.2.10",
     "babel-polyfill": "^6.20.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-latest": "^6.16.0",
-    "babel-preset-react": "^6.16.0",
-    "babel-preset-stage-0": "^6.16.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "morgan": "^1.7.0",
